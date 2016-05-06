@@ -1,0 +1,13 @@
+<div class="col-md-2 col-lg-2 "></div>
+
+<div class="col-md-10 col-lg-10">
+
+  <h3>VidPenguin2.1 Admin</h3>
+  <a href="#/url_var"><i class="fa fa-camera-retro fa-5x"></i></a>
+  <ul id="users" ng-show="users.length">
+    <li ng-repeat="user in users | reverse">
+      {{user.name}} || {{user.email}} || {{user.role}}
+
+    </li>
+  </ul>
+</div>

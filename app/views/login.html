@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4"><h2>Login to VidPenguin 2.1</h2>
+
+    <form role="form">
+      <p class="form-group">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" uib-tooltip="Enter your Email address" required name="email" type="email" ng-model="email" class="form-control" />
+      </p>
+      <p class="form-group">
+        <label for="loginPass">Password</label>
+        <input id="loginPass" uib-tooltip="Enter your Password"  required name="pass" type="password" ng-model="pass" class="form-control" />
+      </p>
+
+      <p>
+        <button  class="btn btn-primary" ng-click="passwordLogin(email, pass)" data-loading-text="Logging in...">Log In</button>
+        <a href="/#/passwordreset" uib-tooltip="Click to reset your Password" class="btn btn-default" >Reset Password</a>
+      </p>
+    </form>
+    <p ng-show="err" class="bg-danger">{{err}}</p>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+
+

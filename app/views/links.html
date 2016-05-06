@@ -1,0 +1,19 @@
+<!-- Sidebar -->
+<div class="col-md-2 col-lg-2"></div>
+
+<!-- Main -->
+<div class="col-md-10 col-lg-10">
+
+  <form>
+
+    <input placeholder="Display" ng-model="newLink" class="ping_search_sht">
+
+    <br>
+    <button type="submit" ng-click="addLink(newLink);newLink = null;">send</button>
+  </form>
+<p>This is the links view.</p>
+
+  <ul id="links" ng-show="links.length">
+    <li ng-repeat="link in links | reverse">{{link.url}}</li>
+  </ul>
+</div>

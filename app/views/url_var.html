@@ -1,0 +1,37 @@
+<!-- Sidebar -->
+<div class="col-md-2 col-lg-2"></div>
+
+<!-- Main -->
+<div class="col-md-10 col-lg-10">
+  <h2>Url variationx</h2>
+
+  <form>
+
+    <input placeholder="String" ng-model="newLink" class="ping_search_sht">
+
+    <br>
+    <button type="submit" ng-click="addLink(newLink);newLink = null;">send</button>
+  </form>
+  <hr>
+  <div id="Links" ng-show="links.length ">
+    <div class="panel" ng-repeat="link in links | orderBy: id ">
+      <!-- Panel Header -->
+      <div class="panel-heading"> Link ID - {{link.id}}</div>
+      <!-- Panel Body -->
+      <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-external-link"> String </i></div><input placeholder="Display" ng-model="link.string" class="url_search_sht">
+        </div>
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-toggle-off"> Active </i></div><input type="checkbox" data-off-text="False" data-on-text="True" checked="false" class="BSswitch" ng-model="link.active">
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-external-link"> Tags </i></div><input placeholder="Display" ng-model="link.tags" ng-change="link.$save()" class="url_search_sht">
+      </div>
+      <!-- Panel Footer -->
+      <div class="panel-footer">Created :: {{link.created | date:"fullDate"}}</div>
+    </div>
+  </div>
+
+  <p class="alert alert-danger" ng-show="err">{{err}}</p>
+</div>

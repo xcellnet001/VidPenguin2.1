@@ -1,0 +1,303 @@
+<div class="col-md-2 col-lg-2 ">
+
+  <h4>Need help ?</h4> <p>Check our Facebook group</p>
+  <a class="btn btn-info btn-block" href="https://www.facebook.com/groups/VidPenguinBetaGroup/" target="_blank"><i class="fa fa-facebook"></i> VidPenguin</a>
+  <hr>
+  <p>Prefer to email ?</p>
+  <a class="btn btn-success btn-block" href="mailto:support@vidpenguin.com"><i class="fa fa-envelope-o"></i> support</a>
+  <br>
+  <a target="_blank" href="http://vidpenguin.com/Coaching" ><img src="/images/VidPenguinCoachingCalls.jpg" width="100%"></a>
+
+</div>
+
+<div class="col-md-10 col-lg-10">
+  <div class="row">
+    <h3>Ping Video</h3>
+    <P>Enter url of the video you wish to ping</P>
+    <div class="input-group ping_search">
+      <div ng-hide="ping.aurl > 0">
+          <input type="text" class="ping_search" id="search" placeholder="Paste your YouTube URL" ng-model="search" ng-model-options="{ debounce: 1000 }" >
+        </div>
+        <div ng-if="ping.aurl == true">
+        <div class="ping_search_time"><h4>{{search}}&t={{vidtime.value}}</h4></div>
+      </div>
+      <div ng-if="search">
+      <button type="submit" ng-click="addFeed(search);search = null" class="btn btn-success pull-right" uib-tooltip="Ping Video">
+        <i class="fa fa-plus-square"> Ping it</i></button>
+    </div>
+      </div>
+
+  </div>
+  <div class="row">
+    <!-- Just slowing things down
+    <div class="spinner" ng-show="loaded"></div> -->
+    <div class="col-md-4 col-lg-4">
+      <br>
+      <div ng-if="search">
+        <img src="{{ping.thumb}}" class="img-rounded" width="100%">
+      </div>
+
+    </div>
+    <div class="col-md-6 col-lg-6 ">
+      <br>
+      <div class ="desc" ng-if="search">
+        <h4><b>Video Title:</b> {{ping.title}}</h4>
+        <P><b>Video ID:</b> {{ping.vidId}}</P>
+        <P><b>Submitted URL:</b> {{search}}</P>
+        <P><b>Publish Date:</b> {{ping.published}}</P>
+        <div class="showDesc" ng-hide="showD"><P><b>Description:</b> {{ ping.description | limitTo:125}}...</P><button type="submit" ng-click="showD = !showD" class="btn btn-info tpad" uib-tooltip="Show entire description"><i class="fa fa-eye"> Show entire description</i></button></div>
+
+
+        <div class="showDesc" ng-show="showD">
+          <button type="submit" ng-click="showD = !showD" class="btn btn-info tpad" uib-tooltip="Show entire description">
+            <i class="fa fa-eye"> Hide entire description</i></button>
+          <h3>Description</h3>
+         {{ ping.description }}
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Bottom Tool Set -->
+    <div class="col-md-10 col-lg-10" ng-if="search">
+
+      <h3>Video Tools</h3>
+      <uib-tabset active="activeJustified" justified="true">
+
+        <!-- Play Video Tab -->
+      <uib-tab index="0" heading="Play Video" >
+        <div id="equalheight">
+        <div class="col-md-8 col-lg-8 tab_back_left">
+          <h4>You Tube Video</h4>
+          <div class="embed-responsive embed-responsive-16by9">
+            <youtube-video video-url="search" player="bestPlayer"></youtube-video>
+          </div>
+
+          <!-- Commented out for carousel
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <td colspan="2"><h4>You Tube Alt Thumbnails</h4></td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td><img src="https://i.ytimg.com/vi/{{ping.vidId}}/1.jpg" style="text-align: center"></td>
+                <td><img src="https://i.ytimg.com/vi/{{ping.vidId}}/2.jpg" style="text-align: center"></td>
+                <td><img src="https://i.ytimg.com/vi/{{ping.vidId}}/3.jpg" style="text-align: center"></td>
+              </tr>
+            </table>
+          </div>
+          -->
+        <br>
+        </div>
+
+        <!-- Play Video Tab tools -->
+        <div class="col-md-4 col-lg-4 tab_back_right">
+
+          <!-- Change thumbnail tools -->
+          <br>
+          <div class="ttool">
+            <button type="submit" ng-click="showThumb = !showThumb" class="panel-heading tpad" uib-tooltip="Thumbnail Control">
+              <i class="fa fa-picture-o">  Change Thumbnail</i>
+            </button>
+
+            <div class="tpad ttools ">
+
+              <uib-carousel interval="myInterval">
+                <uib-slide ng-repeat="slide in slides">
+                  <img ng-src="{{slide.image}}">
+                  <!--
+                  <div class="carousel-caption">
+                    <h4>Slide {{$index+1}}</h4>
+                  </div>
+                  -->
+                </uib-slide>
+              </uib-carousel>
+
+              <img src="https://i.ytimg.com/vi/{{ping.vidId}}/default.jpg" style="text-align: center">
+
+            </div>
+          </div>
+
+          <!-- Start Time tools -->
+          <div class="ttool">
+            <button type="submit" class="panel-heading tpad" uib-tooltip="Add at variable to your url">
+              <i class="fa fa-clock-o"> Add Start Time</i>
+            </button>
+            <div class="tpad ttools">
+              <toggle-switch ng-model="ping.aurl" knob-label="Time"></toggle-switch>
+                <h5>Add Time to URL</h5>
+              <div ng-show="ping.aurl == true">
+                <p>Starting Point <b>&t={{vidtime.value}}</b> seconds</p>
+                  <rzslider rz-slider-model="vidtime.value" rz-slider-options="{ ceil: vtime, floor: 1, step: 1}"></rzslider>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="bottom"></div>
+      </uib-tab>
+
+
+        <!-- Links Tab -->
+
+        <uib-tab index="1" heading="Links">
+          <div id="equalheight">
+            <div class="col-md-8 col-lg-8 tab_back_left">
+              <h4>Links to be added</h4>
+                 <!-- <ul ui-sortable="sortableOptions" ng-model="urls" class="urls">
+                  <li ng-repeat="url in urls" class="vid_list" data-value="active:'1'"> -->
+                <div ui-sortable="sortableOptions" ng-model="preLinks">
+                  <div ng-repeat="preLink in preLinks" id="preLinks" ng-model="preLinks" class="vid_list">
+                   <div class="active" ng-click="changeClass()" ng-class="{deactive : toggle, active : !toggle}" ng-if="ping.aurl == false"><i class="fa fa-link fa-lg" aria-hidden="true"></i> {{ preLink.id }} :: {{ preLink.url }}{{ping.vidId}} :: {{preLink.active}} :: {{preLink.$index}}</div>
+                   <div class="active" ng-click="changeClass()" ng-class="{deactive : toggle, active : !toggle}" ng-if="ping.aurl == null"><i class="fa fa-link fa-lg" aria-hidden="true"></i> {{ preLink.id }} :: {{ preLink.url }}{{ping.vidId}} :: {{preLink.active}} :: {{preLink.$index}}</div>
+                   <div class="active" ng-click="changeClass()" ng-class="{deactive : toggle, active : !toggle}" ng-if="ping.aurl == true"><i class="fa fa-link fa-lg" aria-hidden="true"></i> {{ preLink.id }} :: {{ preLink.url }}{{ping.vidId}}&t={{vidtime.value}} :: {{preLink.active}} :: {{preLink.$index}}</div>
+                  </div>
+                </div>
+              <br>
+               <!-- </li>
+              </ul> -->
+            </div>
+            <div class="state-overview">
+            <div class="col-md-4 col-lg-4 tab_back_right">
+
+              <br>
+              <button type="submit" ng-click="addpreLinks()" class="btn btn-success btn-100">
+                <i class="fa fa-plus-square"> Build Links</i>
+              </button>
+              <HR>
+              <button type="submit" ng-click="showInst = !showInst" class="panel-heading tpad" uib-tooltip="Click to Show Instructions">
+                <i class="fa fa-picture-o">  Instructions</i>
+              </button>
+              <div ng-hide="!showInst">
+                <P>Please choose the links you wish to add to the feed. Green is active / red is inactive. You can also put them into the order you wish by clicking your mouse one one and moving it up or down.</P>
+                <P>Once you have selected all the links you wish click the build links below.  </P>
+              </div>
+
+              <br>
+              <div class="symbol bluee">
+                <i class="fa fa-link" aria-hidden="true"></i>
+                <div class="value">
+                  <h1 class="length"> {{ (urls | filter:{ active: '1'}).length }}</h1>Links to be added</div>
+                </div>
+              <div class="symbol red">
+                <i class="fa fa-link" aria-hidden="true"></i>
+                <div class="value">
+                  <h1 class="length"> {{ (urls | filter:{ active: '0'}).length }}</h1>Links Not to be Added</div>
+              </div>
+
+
+            </div>
+
+            </div>
+          </div>
+
+          <div class="bottom"></div>
+        </uib-tab>
+
+        <!-- Tags Tab -->
+
+        <uib-tab index="2" heading="Tags" class="tags">
+          <div id="equalheight">
+            <div class="col-md-8 col-lg-8 tab_back_left">
+              <h4>You Tube Tags</h4>
+              <ul ng-model="tags" class="tags">
+                <li ng-repeat="t in ping.tags" >
+                  {{t}}
+                </li>
+                </ul>
+              </div>
+
+          <div class="col-md-4 col-lg-4 tab_back_right">
+
+          </div>
+
+          </div>
+          <div class="bottom"></div>
+          </uib-tab>
+
+        <!-- Spintax Tab -->
+      <uib-tab index="3" heading="Content / Spintax" class="spintax">
+            <div id="equalheight">
+              <div class="col-md-8 col-lg-8 tab_back_left">
+
+                  <div class="input-group">
+                    <h4>Title</h4>
+                    <input type="text" class="ping_search" id="sintitle" ng-model="preLinks.title" size="120">
+                  </div>
+                  <div class="input-group">
+                    <h4>Description</h4>
+                    <textarea class="ping_desc" id="sindesc" ng-model="preLinks.desc" rows="12" rows="8" cols="84"></textarea>
+                  </div>
+              </div>
+          <div class="col-md-4 col-lg-4 tab_back_right">
+            <br>
+            <a target="_blank" href="https://www.youtube.com/watch?v=XvEBvC6z0qQ" class="btn btn-sm btn-success pull-right" uib-tooltip="What is spintax and how can I use it?" uib-tooltip-placement="bottom-left">What is spintax <i class="fa fa-question"></i></a>
+            <br>
+
+            <div class="tpad ttools spintax_sw">
+              <button type="submit" class="panel-heading tpad" uib-tooltip="Add at variable to your url">
+                <i class="fa fa-clock-o"> Enable Spintax</i></button>
+            <toggle-switch ng-model="preLinks" knob-label="Enable"></toggle-switch>
+              <button type="submit" class="btn btn-primary" uib-tooltip="run spintax" ng-click="spin(spinTitle)">
+                <i class="fa fa-clock-o"> run Spintax</i></button>
+            </div>
+          </div>
+          </div>
+        {{preLinks}}
+        <div class="bottom"></div>
+      </uib-tab>
+
+        <!-- Feed Tab -->
+        <uib-tab index="4" heading="Feed" class="Feed">
+          <div id="equalheight">
+            <div class="col-md-10 col-lg-10 tab_back_left">
+              <h4>Links to be sumbitted to feed</h4>
+              <!-- Scrolling Begins -->
+
+              <div class="scollTool">
+                <div ng-repeat="preLink in preLinks track by $index" id="preLink" ng-model="preLinks" >
+                  <div class="vid_list">
+                    <div class="row">
+                      <div class="active">
+                        <div class="col-md-2">
+                          <img src="{{preLink.thumb}}" class="img-rounded" width="100%">
+                        </div>
+                        <div class="col-md-10">
+                          <b>
+                            <div ng-if="ping.aurl == false">{{ preLink.id }} <i class="fa fa-link fa-lg" aria-hidden="true"></i>  :: {{ preLink.url }}{{ping.vidId}}</div>
+                            <div ng-if="ping.aurl == null">{{ preLink.id }} <i class="fa fa-link fa-lg" aria-hidden="true"></i>  :: {{ preLink.url }}{{ping.vidId}}</div>
+                            <div ng-if="ping.aurl == true">{{ preLink.id }} <i class="fa fa-link fa-lg" aria-hidden="true"></i>  :: {{ preLink.url }}{{ping.vidId}}&t={{vidtime.value}}</div>
+
+                          </b>
+                          Title: {{preLink.title}}
+                          <br>
+                          {{preLink.desc | limitTo:125}}
+                        </div>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- No Data makes us sad -->
+                <div id="preLinks" ng-show="!preLinks.length">You have no feed or links and that makes us sad.</div>
+              </div>
+            </div>
+
+          <!-- Here goes list of submitted links / titles - then click (modal) to see all thumbnail/title/desc/link -->
+
+            <div class="col-md-2 col-lg-2 tab_back_right">
+              <br>
+               <button type="submit" ng-click="addFeed(search);search = null" class="btn btn-success btn-100" uib-tooltip="Ping Video">
+                  <i class="fa fa-plus-square"> Ping it</i>
+               </button>
+            </div>
+          </div>
+          </div>
+    <div class="bottom"></div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+  </div>
+
+
+</div>

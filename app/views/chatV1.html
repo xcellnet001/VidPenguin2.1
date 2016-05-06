@@ -1,0 +1,32 @@
+<div class="col-md-2 col-lg-2 ">
+
+  {{profile.$id}}<br>
+  {{profile.name}}<br>
+  {{profile.role}}<br>
+
+
+  <pre>{{profile }}</pre><br>
+</div>
+
+<div class="col-md-10 col-lg-10">
+<h2>Chat</h2>
+<form>
+  <input placeholder="URL..." ng-model="newMessage" class="ping_search_sht">
+  <button type="submit" ng-click="addMessage(newMessage);newMessage = null;" class="btn btn-success pull-right">Add Video to Feed</button>
+</form>
+
+<hr>
+  <h3>Last 3 Videos for Fuckers</h3>
+<ol id="messages" ng-show="messages.length">
+  <li ng-repeat="message in messages | reverse" class="bs-callout bs-callout-info">
+    <blockquote>
+      {{message.$id}}<br>
+    <img src="{{ message.thumb }}" class="img-rounded" width="145px">
+      <br>{{message.title}}<br>
+      {{message.url}}
+    </blockquote>
+  </li>
+</ol>
+
+<p class="alert alert-danger" ng-show="err">{{err}}</p>
+</div>

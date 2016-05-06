@@ -1,0 +1,21 @@
+<!-- Sidebar -->
+<div class="col-md-2 col-lg-2"></div>
+
+<!-- Main -->
+<div class="col-md-10 col-lg-10">
+<h2>Chat</h2>
+
+<form>
+
+  <input placeholder="Display" ng-model="newLink" class="ping_search_sht">
+
+  <br>
+  <button type="submit" ng-click="addLink(newLink);newLink = null;">send</button>
+</form>
+<hr>
+<ul id="Links" ng-show="links.length">
+  <li ng-repeat="link in links | reverse">{{link.id}} || {{link.string}}</li>
+</ul>
+
+<p class="alert alert-danger" ng-show="err">{{err}}</p>
+</div>

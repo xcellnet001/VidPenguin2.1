@@ -1,0 +1,62 @@
+<!-- Sidebar -->
+<div class="col-md-2 col-lg-2">
+
+
+
+
+
+</div>
+
+<!-- Main -->
+<div class="col-md-10 col-lg-10">
+
+  <b>SUBMITTED FEED URL ::</b><A HREF="{{ feed.url }}" target="_blank"><br>{{ feed.url }}</A>
+  <br>
+
+  <div class="col-md-3 col-lg-3"><img src="{{ feed.thumb }}" class="img-thumbnail img-responsive" uib-tooltip="{{ feed.title }}" width="100%"></div>
+
+  <div class="col-md-4 col-lg-4">
+    <b>FEED TITLE::</b> {{ feed.title }}<br>
+    <b>FEED ID ::</b> {{ feed.$id }}<br>
+    <b>FEED You Tube ID ::</b> {{ feed.v }}<br>
+
+  </div>
+
+  <div class="col-md-10 col-lg-10">
+
+    <div class="link_tools">
+     <div ng-click="show.tools = !show.tools"> Show All Links</div>
+
+    </div>
+
+    <div class="link_display" ng-show="!show.tools">
+    <br>
+   <div ng-repeat="link in links | filter:{ vid: feed.$id}" class="panel panel_link">
+     <div class="feed_link panel-heading" ng-click="show.links = !show.links" >LINK ID :: {{link.$id}}</div>
+
+     <div class="feed_link" ><i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a></div>
+
+
+     <div class="iput_frame" ng-show="show.links">
+     <div class="input-group">
+       <span class="input-group-addon" id="addon1"><b>Title:</b></span>
+       <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
+     </div>
+     <br>
+     <span class="input-group-addon" id="addon2"><b>Description:</b></span>
+     <textarea class="form-control" rows="5"  ng-model="link.desc"></textarea>
+
+     </div>
+    </div>
+      <p id="link_form"></p>
+    </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
