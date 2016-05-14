@@ -19,7 +19,7 @@ angular.module('vidPenguin21App')
       //Does anyone know what time it is?
       $scope.milliseconds = (new Date()).getTime();
 
-      $scope.aurl = 'false';
+      $scope.aurl = false;
       $scope.loaded = false;
 
       //watch form to add feed
@@ -30,7 +30,8 @@ angular.module('vidPenguin21App')
 
 
       //Can add YouTube url to display on first view
-      $scope.search = 'https://www.youtube.com/watch?v=3oY2MpZKAa4';
+      //$scope.search = 'https://www.youtube.com/watch?v=3oY2MpZKAa4';
+      $scope.search = 'https://www.youtube.com/watch?v=F4gJsKZvqE4';
       //$scope.search = 'https://www.youtube.com/watch?v=Qim29B8ZBKg';
       //$scope.search = 'https://www.youtube.com/watch?v=pPH45dXZxaM';
       //$scope.search = '';
@@ -99,16 +100,16 @@ angular.module('vidPenguin21App')
       $scope.links = $firebaseArray(Ref.child('links').child(user.uid).limitToLast(1));
       $scope.profile = $firebaseObject(Ref.child('users').child(user.uid));
       $scope.urls = $firebaseArray(Ref.child('urls').limitToLast(100));
-      $scope.aslides = $firebaseArray(Ref.child('slides').limitToLast(5));
-      $scope.drips = $firebaseArray(Ref.child('drips').child(user.uid).limitToLast(1));
+      //$scope.aslides = $firebaseArray(Ref.child('slides').limitToLast(5));
+      //$scope.drips = $firebaseArray(Ref.child('drips').child(user.uid).limitToLast(1));
 
       // display any errors
       $scope.feeds.$loaded().catch(alert);
       $scope.links.$loaded().catch(alert);
       $scope.profile.$loaded().catch(alert);
       $scope.urls.$loaded().catch(alert);
-      $scope.aslides.$loaded().catch(alert);
-      $scope.drips.$loaded().catch(alert);
+      //$scope.aslides.$loaded().catch(alert);
+      //$scope.drips.$loaded().catch(alert);
 
       // provide a method for adding a vid to feed
       $scope.addFeed = function(search) {
@@ -121,11 +122,14 @@ angular.module('vidPenguin21App')
             $scope.feeds.$indexFor(id); // returns location in the array
               console.log('the id is' + id);
 
-             angular.forEach($scope.urls,function(url){
-                $scope.links.$add({id: url.id, url: url.display, title: $scope.ping.title, desc: $scope.ping.description, v:$scope.ping.vidId,  date: $scope.milliseconds, active: '1', vid: id,user: $scope.user.uid,thumb: $scope.ping.thumb });
+             angular.forEach($scope.preLinks,function(preLink){
+               if (preLink.active === true){
+                $scope.links.$add({id: preLink.id, url: preLink.url, title: preLink.title, desc: preLink.desc, v:$scope.ping.vidId,  date: $scope.milliseconds, active: true, vid: id,user: $scope.user.uid,thumb: $scope.ping.thumb });
                 var lid = Ref.key();
                 console.log('added record with id ' + lid);
+             }
               });
+
             console.log('added record with id ' + id);
             $timeout(function() { $scope.loaded = true; }, 5000);
               $location.path('/feeds');
@@ -172,63 +176,59 @@ angular.module('vidPenguin21App')
 
         });
       };
-      $scope.myInterval = 5000;
-      $scope.noWrapSlides = false;
-      $scope.active = 0;
-      //var slides = $scope.slides = [];
-      //var currIndex = 0;
 
-      $scope.slides = [
-        {
-          image: 'https://i.ytimg.com/vi/3oY2MpZKAa4/default.jpg'
-        },
-        {
-          image: 'https://i.ytimg.com/vi/3oY2MpZKAa4/1.jpg'
-        },
-        {
-          image: 'https://i.ytimg.com/vi/3oY2MpZKAa4/2.jpg'
-        },
-        {
-          image: 'https://i.ytimg.com/vi/3oY2MpZKAa4/3.jpg'
-        }
-      ];
 
-      $scope.sortableOptions = {
-
-      };
-
-      // for switch links between active and not active
-      // $scope.preLink.active = 'true';
-      // control color and active for prelink
-      $scope.changeClass = function(){
-        if ($scope.toggle === false) {
-          $scope.preLink.active = true;
-          console.log($scope.active);
-        } else {
-          $scope.prelink.active = false;
-          console.log($scope.active);
-        }
-      };
-
-      //create preLinks array. This is a temp array to pull links
-      $scope.preLinks = [];
+      //add links to temp array prior to to adding them to the FB list.
       $scope.addpreLinks = function() {
         //base load of preLinks with data
         $scope.preLinks.title = $scope.ping.title;
         $scope.preLinks.desc = $scope.ping.description;
+        $scope.orderProp = '$index + 1';
+        var newpreLink = {};
+        newpreLink.active = true;
+        newpreLink.title = $scope.ping.title;
+        newpreLink.desc = $scope.ping.description;
+        newpreLink.v = $scope.v;
+        newpreLink.thumb = $scope.ping.thumb;
 
-        angular.forEach($scope.urls,function(url){
-          var newpreLink ={};
-          newpreLink.active = true;
-          newpreLink.title = $scope.ping.title;
-          newpreLink.desc = $scope.ping.description;
-          newpreLink.v = $scope.v;
-          newpreLink.thumb = $scope.ping.thumb;
-          $scope.preLinks.push({id: url.id, url: url.display, title: newpreLink.title, desc: newpreLink.desc, v:newpreLink.v, active: true,thumb: newpreLink.thumb});
-          console.log($scope.preLinks);
-        });
+        angular.forEach($scope.urls, function (url) {
+          if ($scope.preLinks.length >= $scope.val.value) {
+            $scope.preLinks.push({
+              id: url.id,
+              url: url.display,
+              title: newpreLink.title,
+              desc: newpreLink.desc,
+              v: newpreLink.v,
+              active: false,
+              thumb: newpreLink.thumb
+            });
+          } else {
+            $scope.preLinks.push({
+              id: url.id,
+              url: url.display,
+              title: newpreLink.title,
+              desc: newpreLink.desc,
+              v: newpreLink.v,
+              active: true,
+              thumb: newpreLink.thumb
+            });
+          }
+
+            console.log($scope.preLinks);
+
+          });
+        };
+
+
+
+
+      $scope.resetpreLinks = function(){
+
+        $scope.preLinks = [];
+        //$scope.$apply();
+
+
       };
-
       //Set YouTube video for feed list ng-show
       $scope.url = $scope.search;
 
@@ -242,10 +242,74 @@ angular.module('vidPenguin21App')
         }
       };
 
+
+      // Set vid time slider init value ** Need to investigate why scope variable will not work. Need to use url.length here **
+      $scope.val = {
+        value: 1,
+        maxValue: $scope.urls.length,
+        options: {
+          floor: 1,
+          ceil: 32,
+          step: 1,
+          showTicks: true
+
+        }
+      };
+
+      $scope.updateTD = function() {
+
+        angular.forEach($scope.preLinks, function (preLink) {
+          console.log(preLink);
+          var title = document.getElementById('sintitle').value;
+          var desc = document.getElementById('sindesc').value;
+          console.log(title);
+          console.log(desc);
+
+          console.log('made it 0');
+          preLink.title = title;
+          console.log('made it 1');
+          preLink.desc = desc;
+          console.log('made it 2');
+
+        });
+
+        $scope.$apply();
+
+
+      };
+
+
+      $scope.spin = function() {
+
+        angular.forEach($scope.preLinks, function (preLink) {
+          console.log(preLink);
+          var title = document.getElementById('sintitle').value;
+          var desc = document.getElementById('sindesc').value;
+          console.log(title);
+          console.log(desc);
+
+          console.log('made it 0');
+          preLink.title = title;
+          preLink.title = spin(preLink.title);
+          console.log('made it 1');
+          preLink.desc = desc;
+          preLink.desc = spin(preLink.desc);
+          console.log('made it 2');
+
+        });
+
+        $scope.$apply();
+
+
+      };
+
+
       $scope.toggleDetail = function($index) {
         //$scope.isVisible = $scope.isVisible == 0 ? true : false;
         $scope.activePosition = $scope.activePosition === $index ? -1 : $index;
       };
+
+
 
       function alert(msg) {
         $scope.err = msg;

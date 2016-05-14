@@ -422,13 +422,13 @@ img{
   border-radius: 2px;
   font-size: 12px;
   font-weight: 400;
-
+  transition: all linear 5.5s;
 }
 .vid_list .active {
-  background: #e9f8e9;
+  background: #f8d9d9;
 }
 .vid_list .deactive {
-  background: #f8d9d9;
+  background: #e9f8e9;
 }
 .urls {
   -webkit-padding-start: 0;
@@ -477,7 +477,10 @@ img{
   height: 240px;
 }
 .spintax_sw {
-  margin-top: 40px;
+
+}
+.spintax_sw_head {
+  margin-top: 10px;
 }
 .scollTool {
   height: 400px;

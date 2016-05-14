@@ -28,7 +28,7 @@
             <i class="fa fa-video-camera"></i>
 
           <div class="value">
-            <h1 class="length">{{ (links | filter:{ v: feed.v, active: '1'}).length }}</h1>
+            <h1 class="length">{{ (links | filter:{ v: feed.v, active: true}).length }}</h1>
             Links Pinged  </div>
           </div>
 
@@ -127,7 +127,7 @@
 
 
             </td>
-            <td width="7%" ng-click="show.links = !show.links" class="tdcenter">{{ (links | filter:{ v: feed.v, active: '1'}).length }}</td>
+            <td width="7%" ng-click="show.links = !show.links" class="tdcenter">{{ (links | filter:{ v: feed.v, active: true}).length }}</td>
             <td width="16%" ng-click="show.links = !show.links">{{feed.date | date:"MM/dd/yyyy '/' h:mma"}}</td>
 
 
@@ -184,7 +184,7 @@
 
           </tr>
 
-          <tr ng-show="show.links" ng-repeat="link in links | filter:{ vid: feed.$id, active: '1'}" class="links">
+          <tr ng-show="show.links" ng-repeat="link in links | filter:{ vid: feed.$id, active: true}" class="links">
 
             <td colspan="1" class="link_row_fill">
 
