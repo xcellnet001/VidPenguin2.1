@@ -134,10 +134,10 @@
             <!-- application actions -->
             <td class="feeds_actions">
 
-              <a href="https://vidp2.firebaseio.com/links/{{ feed.user }}/{{ feed.$id }}/.json&auth=xUwpJXMqI5uleK6KcN0z87YK4zys6okvA1oQxaOT" target="_blank" class="feedtool" uib-tooltip="View JSON" >
+              <a href ng-click="show.JSON = !show.JSON" class="feedtool" uib-tooltip="View JSON" >
                 <img src="/images/images.jpg" width="36px">
               </a>
-              <a href="https://vidp2.firebaseio.com/links/{{ feed.user }}/{{ feed.$id }}/.json&auth=xUwpJXMqI5uleK6KcN0z87YK4zys6okvA1oQxaOT" target="_blank" class="btn btn-primary feedtool" uib-tooltip="View XML/RSS" >
+              <a href ng-click="show.XML = !show.XML" class="btn btn-primary feedtool" uib-tooltip="View XML/RSS" >
                 <i style="width:12px;" class="fa fa-rss"></i>
               </a>
               <a href ng-click="show.Syndwire = !show.Syndwire" class="btn btn-warning feedtool" uib-tooltip="Promote with Syndwire">
@@ -229,6 +229,44 @@
 
           </tr>
 
+
+          <!-- Show JSON -->
+          <tr ng-show="show.JSON" class="JSON">
+            <td colspan="5">
+              <pre>{<br> "title":"{{feed.title}}","link": "{{feed.url}}"
+              <div ng-repeat="link in links | filter:{ vid: feed.$id, active: true}">
+                "link":"{{link.url}}{{link.v}}","title":"{{link.title}}", "description":{{link.desc}}
+              </div>
+                }
+                </pre>
+            </td>
+          </tr>
+
+
+          <!-- Show XML -->
+          <tr ng-show="show.XML" class="XML">
+            <td colspan="5">
+              <section>
+                <div ui-ace >Ace here</div>
+              </section>
+             <div ui-ace>
+               <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+                 <channel>
+                   <title>{{feed.title}}</title>
+                   <description></description>
+                   <link>{{feed.url}}</link>
+                      <div ng-repeat="link in links | filter:{ vid: feed.$id, active: true}">
+                        <item>
+                          <title>{{link.title}}</title>
+                          <description>{{link.desc}}</description>
+                          <link>{{link.url}}{{link.v}}</link>
+                        </item>
+                      </div>
+                 </channel>
+                 </rss>
+              </div>
+            </td>
+          </tr>
 
           <!-- Syndwire -->
           <tr ng-show="show.Syndwire" class="Syndwire">

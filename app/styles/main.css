@@ -495,3 +495,13 @@ img{
 .ping_desc {
 
 }
+.XML {
+  min-width: 680px;
+  max-width: 980px;
+  width: 100%;
+}
+.JSON {
+  min-width: 240px;
+  max-width: 680px;
+  width: 100%;
+}
