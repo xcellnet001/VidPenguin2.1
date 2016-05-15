@@ -154,7 +154,7 @@
             <div class="col-md-8 col-lg-8 tab_back_left">
               <h4>Links to be added</h4>
 
-                  <div ng-repeat="preLink in preLinks |filter:{active: true}" id="preLink1" ng-model="preLinks" class="vid_list" >
+                  <div ng-repeat="preLink in preLinks" id="preLink1" ng-model="preLinks" class="vid_list" >
                    <div ng-if="ping.aurl == false"><div class="active" ng-click="changeClass()" ng-class="{deactive: preLink.active}"><i class="fa fa-link fa-lg" aria-hidden="true"></i> {{ preLink.id }} :: {{ preLink.url }}{{ping.vidId}}<!-- :: {{preLink.active}} :: {{preLink.$index}} --></div></div>
                     <div ng-if="ping.aurl == null"><div class="active" ng-click="changeClass()" ng-class="{deactive: preLink.active}" ><i class="fa fa-link fa-lg" aria-hidden="true"></i> {{ preLink.id }} :: {{ preLink.url }}{{ping.vidId}}<!-- :: {{preLink.active}} :: {{preLink.$index}} --></div></div>
                     <div ng-if="ping.aurl == true"><div class="active" ng-click="changeClass()" ng-class="{deactive: preLink.active}" ><i class="fa fa-link fa-lg" aria-hidden="true"></i> {{ preLink.id }} :: {{ preLink.url }}{{ping.vidId}}&t={{vidtime.value}}<!-- :: {{preLink.active}} :: {{preLink.$index}} --></div></div>

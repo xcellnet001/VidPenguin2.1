@@ -31,10 +31,10 @@ angular.module('vidPenguin21App')
 
       //Can add YouTube url to display on first view
       //$scope.search = 'https://www.youtube.com/watch?v=3oY2MpZKAa4';
-      $scope.search = 'https://www.youtube.com/watch?v=F4gJsKZvqE4';
+      //$scope.search = 'https://www.youtube.com/watch?v=F4gJsKZvqE4';
       //$scope.search = 'https://www.youtube.com/watch?v=Qim29B8ZBKg';
       //$scope.search = 'https://www.youtube.com/watch?v=pPH45dXZxaM';
-      //$scope.search = '';
+      $scope.search = '';
 
       $scope.err = 'you have an error searching for a video';
 
@@ -100,16 +100,13 @@ angular.module('vidPenguin21App')
       $scope.links = $firebaseArray(Ref.child('links').child(user.uid).limitToLast(1));
       $scope.profile = $firebaseObject(Ref.child('users').child(user.uid));
       $scope.urls = $firebaseArray(Ref.child('urls').limitToLast(100));
-      //$scope.aslides = $firebaseArray(Ref.child('slides').limitToLast(5));
-      //$scope.drips = $firebaseArray(Ref.child('drips').child(user.uid).limitToLast(1));
+
 
       // display any errors
       $scope.feeds.$loaded().catch(alert);
       $scope.links.$loaded().catch(alert);
       $scope.profile.$loaded().catch(alert);
       $scope.urls.$loaded().catch(alert);
-      //$scope.aslides.$loaded().catch(alert);
-      //$scope.drips.$loaded().catch(alert);
 
       // provide a method for adding a vid to feed
       $scope.addFeed = function(search) {
@@ -172,8 +169,6 @@ angular.module('vidPenguin21App')
           var ct1 = document.getElementById('sintitle');
           ct1.value = spin(ct1.value);
           console.log('sintitle ' + ct1.value);
-
-
         });
       };
 
@@ -224,9 +219,13 @@ angular.module('vidPenguin21App')
 
       $scope.resetpreLinks = function(){
 
-        $scope.preLinks = [];
-        //$scope.$apply();
+        // angular.forEach($scope.preLinks, function (preLink) {
+        //  preLink.active = false;
+        // });
 
+
+
+        $scope.preLinks.length = 0;
 
       };
       //Set YouTube video for feed list ng-show

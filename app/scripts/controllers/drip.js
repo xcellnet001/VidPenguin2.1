@@ -35,6 +35,7 @@ angular.module('vidPenguin21App')
           Ref.authWithOAuthPopup('google', function(error, authData) {
             if (error) {
               console.log('Login Failed!', error);
+              console.log(authData);
             } else {
               console.log('Authenticated successfully with payload:', authData);
             }
@@ -71,15 +72,8 @@ angular.module('vidPenguin21App')
         .catch(function(error) {
           console.error('Error:', error);
         });
-
       console.log( 'Do you want fries with that?' );
-
-
     };
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
 
   });

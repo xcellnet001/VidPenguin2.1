@@ -30,7 +30,7 @@
         <i class="fa fa-video-camera"></i>
 
         <div class="value">
-          <h1 class="length">{{ (links | filter:{ v: feed.v, active: '1'}).length }}</h1>
+          <h1 class="length">{{ (links | filter:{ v: feed.v, active: true}).length }}</h1>
           Links Pinged  </div>
       </div>
     </a>
@@ -79,10 +79,11 @@
       </div>
     </td>
 
+    <!-- output for development
     <tr ng-repeat="drip in drips" class="links">
       <td colspan="4" width="100%">{{json}}</td>
     </tr>
-
+-->
   </tr>
 
     </table>

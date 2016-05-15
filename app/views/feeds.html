@@ -134,7 +134,10 @@
             <!-- application actions -->
             <td class="feeds_actions">
 
-              <a href="https://vidp2.firebaseio.com/links/{{ feed.user }}/{{ feed.$id }}/.json&auth=xUwpJXMqI5uleK6KcN0z87YK4zys6okvA1oQxaOT" target="_blank" class="btn btn-primary feedtool" uib-tooltip="View Internal Feed" >
+              <a href="https://vidp2.firebaseio.com/links/{{ feed.user }}/{{ feed.$id }}/.json&auth=xUwpJXMqI5uleK6KcN0z87YK4zys6okvA1oQxaOT" target="_blank" class="feedtool" uib-tooltip="View JSON" >
+                <img src="/images/images.jpg" width="36px">
+              </a>
+              <a href="https://vidp2.firebaseio.com/links/{{ feed.user }}/{{ feed.$id }}/.json&auth=xUwpJXMqI5uleK6KcN0z87YK4zys6okvA1oQxaOT" target="_blank" class="btn btn-primary feedtool" uib-tooltip="View XML/RSS" >
                 <i style="width:12px;" class="fa fa-rss"></i>
               </a>
               <a href ng-click="show.Syndwire = !show.Syndwire" class="btn btn-warning feedtool" uib-tooltip="Promote with Syndwire">
@@ -146,12 +149,12 @@
               <a href ng-click="show.booster = !show.booster" class="btn btn-info feedtool" uib-tooltip="Power Booster">
                 <i style="width:12px;" style="width:14px;" class="fa fa-bolt"></i>
               </a>
-              <button type="button" ng-csv="links | filter:{ vid: feed.v}" filename="VidPenguinfeeds.csv" class="btn btn-success feedtool" uib-tooltip="Download feed as CSV">
-              <i style="width:12px;" class="fa fa-download"></i>
-            </button>
+              <a href ng-click="show.booster = !show.booster" class="feedtool" uib-tooltip="Pro Rank Tracker">
+              <img src="/images/pro-rank-tracker-5f26ac-w240.png" width="36px">
+                </a>
               <button type="button" ng-csv="links | filter:{ vid: feed.v}" filename="VidPenguinfeeds.csv" class="btn btn-success feedtool" uib-tooltip="Download feed as CSV">
                 <i style="width:12px;" class="fa fa-download"></i>
-              </button>
+               </button>
               <a href ng-click="show.drip = !show.drip" class="btn btn-primary feedtool" uib-tooltip="Drip Social Record">
                 <i style="width:12px;" class="fa fa-coffee"></i>
               </a>
@@ -160,6 +163,7 @@
               </a>
               <a href="#/feeds" ng-click="feeds.$remove(feed, deleteIt)" class="btn btn-danger feedtool" uib-tooltip="Delete Record">
                 <i style="width:12px;" class="fa fa-trash"></i></a>
+
             </td>
 
 
