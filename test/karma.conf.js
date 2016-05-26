@@ -42,6 +42,11 @@ module.exports = function(config) {
       'bower_components/angular-ui-sortable/sortable.js',
       'bower_components/angular-toggle-switch/angular-toggle-switch.js',
       'bower_components/angularjs-slider/dist/rzslider.js',
+      'bower_components/codemirror/lib/codemirror.js',
+      'bower_components/angular-ui-codemirror/ui-codemirror.js',
+      'bower_components/angular-carousel/dist/angular-carousel.js',
+      'bower_components/slick-carousel/slick/slick.min.js',
+      'bower_components/angular-slick/dist/slick.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

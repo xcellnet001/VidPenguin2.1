@@ -1,14 +1,59 @@
 <!-- Sidebar -->
 <div class="col-md-2 col-lg-2">
 
-
+<h4>Need help ?</h4> <p>Check our Facebook group</p>
+    <a class="btn btn-info btn-block" href="https://www.facebook.com/groups/VidPenguinBetaGroup/" target="_blank"><i class="fa fa-facebook"></i> VidPenguin</a>
+    <hr>
+    <p>Prefer to email ?</p>
+    <a class="btn btn-success btn-block" href="mailto:support@vidpenguin.com"><i class="fa fa-envelope-o"></i> support</a>
+    <br>
+    <a target="_blank" href="http://vidpenguin.com/Coaching" ><img src="/images/VidPenguinCoachingCalls.jpg" width="100%"></a>
 
 
 
 </div>
 
 <!-- Main -->
+
+
 <div class="col-md-10 col-lg-10">
+    <div class="state-overview">
+<!-- Stats display -->
+      <div class="col-md-4 col-xs-12">
+<a href="/#/feeds">
+          <div class="symbol terques">
+            <i class="fa fa-rss"></i><div class="value"> <h1 class="length">{{ (feeds).length }}  </h1> Video Feeds</div>
+
+          </div>
+</a>
+      </div>
+
+      <div class="col-md-4 col-xs-12">
+
+          <div class="symbol red">
+            <i class="fa fa-video-camera"></i>
+
+          <div class="value">
+            <h1 class="length">{{ (links | filter:{ active: true}).length }}</h1>
+            Links Pinged  </div>
+          </div>
+
+      </div>
+      <div class="col-md-4 col-xs-12">
+      <a href="/#/drip">
+        <div class="symbol bluee">
+          <i class="fa fa-coffee"></i>
+
+          <div class="value">
+            <h1 class="length">{{ (drips).length }}</h1>
+            Social Starters Scheduled  </div>
+        </div>
+
+      </a>
+      </div>
+    </div>
+<hr>
+	<h3>Video Feed</h3>
 
   <b>SUBMITTED FEED URL ::</b><A HREF="{{ feed.url }}" target="_blank"><br>{{ feed.url }}</A>
   <br>
@@ -22,34 +67,57 @@
 
   </div>
 
-  <div class="col-md-10 col-lg-10">
+  <div class="col-md-12 col-lg-12">
+    <uib-tabset active="active">
+      <uib-tab index="0" heading="Links">
+        <div id="equalheight" class="tab_back_left">
 
-    <div class="link_tools">
-     <div ng-click="show.tools = !show.tools"> Show All Links</div>
+        <div class="link_display">
+          <br>
+          <div ng-repeat="link in links | filter:{ vid: feed.$id}" class="panel panel_link">
+            <div class="feed_link panel-heading" ng-click="show.links = !show.links" >LINK ID :: {{link.$id}}<i class="fa fa-external-link-square pull-right" aria-hidden="true">  Open Link</i></div>
+            <div class="col-md-3 col-lg-3" ng-show="show.links" >
+              <img class="img-thumbnail img-responsive" uib-tooltip="STAR TREK BEYOND Trailer # 2 [Ultra HD 4k]" width="100%" src="https://i.ytimg.com/vi/JFrHA4ww8Us/mqdefault.jpg">
+            </div>
+            <div class="feed_link" ><i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a></div>
+            <div class="iput_frame" ng-show="show.links">
+              <div class="input-group">
+                <span class="input-group-addon" id="addon1"><b>Title:</b></span>
+                <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
+              </div>
+              <br>
 
-    </div>
+              <span class="input-group-addon" id="addon2"><b>Description:</b></span>
+              <textarea class="form-control" rows="5"  ng-model="link.desc"></textarea>
+            </div>
+          </div>
+          <p id="link_form"></p>
+        </div>
+      </div>
+      </uib-tab>
+      <uib-tab index="1" heading="Social Starter">
+        <div id="equalheight" class="tab_back_left">
+        Social Starter
+        </div>
+      </uib-tab>
+      <uib-tab index="2" heading="Static title">
+        <div id="equalheight" class="tab_back_left">
+          Static content
+          </div>
+      </uib-tab>
 
-    <div class="link_display" ng-show="!show.tools">
-    <br>
-   <div ng-repeat="link in links | filter:{ vid: feed.$id}" class="panel panel_link">
-     <div class="feed_link panel-heading" ng-click="show.links = !show.links" >LINK ID :: {{link.$id}}</div>
 
-     <div class="feed_link" ><i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a></div>
+      <uib-tab index="3" heading="Raw">
+        <div id="equalheight" class="tab_back_left">
+        {{feed}}
+        <hr>
+        {{links}}</div>
+      </uib-tab>
 
 
-     <div class="iput_frame" ng-show="show.links">
-     <div class="input-group">
-       <span class="input-group-addon" id="addon1"><b>Title:</b></span>
-       <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
-     </div>
-     <br>
-     <span class="input-group-addon" id="addon2"><b>Description:</b></span>
-     <textarea class="form-control" rows="5"  ng-model="link.desc"></textarea>
+      </uib-tabset>
 
-     </div>
-    </div>
-      <p id="link_form"></p>
-    </div>
+
 
     </div>
 

@@ -113,7 +113,7 @@ angular.module('vidPenguin21App')
 
         if( search ){
            // push a vid to the end of the array
-          $scope.feeds.$add({user: $scope.user.uid, url: $scope.search, title: $scope.ping.title, thumb: $scope.ping.thumb, date: $scope.milliseconds, v:$scope.ping.vidId, t:$scope.vidtime.value})
+          $scope.feeds.$add({user: $scope.user.uid, url: $scope.search, title: $scope.ping.title, desc: $scope.ping.description, thumb: $scope.ping.thumb, date: $scope.milliseconds, v:$scope.ping.vidId, t:$scope.vidtime.value})
           .then(function(Ref){
             var id = Ref.key();
             $scope.feeds.$indexFor(id); // returns location in the array
@@ -182,6 +182,7 @@ angular.module('vidPenguin21App')
         var newpreLink = {};
         newpreLink.active = true;
         newpreLink.title = $scope.ping.title;
+        // why is desc not going at top of xml?
         newpreLink.desc = $scope.ping.description;
         newpreLink.v = $scope.v;
         newpreLink.thumb = $scope.ping.thumb;

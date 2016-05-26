@@ -47,27 +47,30 @@ angular.module('vidPenguin21App')
       console.log(link);
       window.alert('Adding Social Starter');
     };
+
     $scope.addDrips = function() {
+      if ($scope.feed.$id === '-KIZip2uCCw2AcRLsKEs'){
       angular.forEach($scope.links,function(link) {
-        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,Frequency: 'frequency' ,target: 'target' });
+        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,frequency: $scope.frequency ,target: $scope.target });
         console.log(link);
       });
+      }
     };
 
     $scope.frequency = [
-      'right now bitches',
-      '6 hours',
-      '12 hours',
-      'once a day',
-      'once every 3 days',
-      'once a week'
+      '6 hours'
     ];
 
     $scope.target = [
-      'Blogger',
-      'Wordpress',
-      'Google +'
+      'Blogger'
     ];
+
+    $scope.editorOptions = {
+      lineWrapping : true,
+      lineNumbers: true,
+      readOnly: 'nocursor',
+      mode: 'xml',
+    };
 
     $scope.toggleAnimation = function () {
       $scope.animationsEnabled = !$scope.animationsEnabled;

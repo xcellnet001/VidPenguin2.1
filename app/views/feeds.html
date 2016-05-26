@@ -14,35 +14,26 @@
     <div class="state-overview">
 <!-- Stats display -->
       <div class="col-md-4 col-xs-12">
-
           <div class="symbol terques">
             <i class="fa fa-rss"></i><div class="value"> <h1 class="length">{{ (feeds).length }}  </h1> Video Feeds</div>
-
           </div>
-
       </div>
-
       <div class="col-md-4 col-xs-12">
-
           <div class="symbol red">
             <i class="fa fa-video-camera"></i>
-
           <div class="value">
             <h1 class="length">{{ (links | filter:{ v: feed.v, active: true}).length }}</h1>
             Links Pinged  </div>
           </div>
-
       </div>
       <div class="col-md-4 col-xs-12">
       <a href="/#/drip">
         <div class="symbol bluee">
           <i class="fa fa-coffee"></i>
-
           <div class="value">
             <h1 class="length">{{ (drips).length }}</h1>
             Social Starters Scheduled  </div>
         </div>
-
       </a>
       </div>
     </div>
@@ -50,10 +41,8 @@
     </div>
     <div class="col-md-10 col-lg-10">
       <h3>Video Feeds</h3>
-
       <!-- search filter -->
       <div class="col-md-6 col-lg-6">
-
         <form>
           <div class="form-group">
             <div class="input-group">
@@ -112,7 +101,7 @@
 
 
             </thead>
-            <tbody ng-repeat="feed in feeds | orderBy:sortType:sortReverse | filter:searchFeeds">
+            <tbody ng-repeat="feed in feeds | orderBy:'date':reverseorder | filter:searchFeeds">
           <tr>
 
             <!-- Opens Video -->
@@ -159,7 +148,7 @@
                 <i style="width:12px;" class="fa fa-coffee"></i>
               </a>
               <a href="#/feed/{{feed.$id}}" class="btn btn-primary feedtool" uib-tooltip="View All Links">
-                <i style="width:12px;" class="fa fa-link"></i>
+                <i style="width:12px;" class="fa fa-pencil"></i>
               </a>
               <a href="#/feeds" ng-click="feeds.$remove(feed, deleteIt)" class="btn btn-danger feedtool" uib-tooltip="Delete Record">
                 <i style="width:12px;" class="fa fa-trash"></i></a>
@@ -233,12 +222,18 @@
           <!-- Show JSON -->
           <tr ng-show="show.JSON" class="JSON">
             <td colspan="5">
-              <pre>{<br> "title":"{{feed.title}}","link": "{{feed.url}}"
+              <h3>JSON</h3>
+                <div ui-codemirror ui-codemirror-opts="editorOptions">
+             {
+                  "title":"{{feed.title}}","link": "{{feed.url}}"
               <div ng-repeat="link in links | filter:{ vid: feed.$id, active: true}">
                 "link":"{{link.url}}{{link.v}}","title":"{{link.title}}", "description":{{link.desc}}
               </div>
                 }
-                </pre>
+
+                  </div>
+
+
             </td>
           </tr>
 
@@ -246,10 +241,9 @@
           <!-- Show XML -->
           <tr ng-show="show.XML" class="XML">
             <td colspan="5">
-              <section>
-                <div ui-ace >Ace here</div>
-              </section>
-             <div ui-ace>
+              <h3>XML</h3>
+                <div ui-codemirror ui-codemirror-opts="editorOptions">
+
                <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
                  <channel>
                    <title>{{feed.title}}</title>
@@ -264,7 +258,9 @@
                       </div>
                  </channel>
                  </rss>
-              </div>
+
+                 </div>
+
             </td>
           </tr>
 
@@ -292,11 +288,15 @@
             <td colspan="1"></td>
             <td colspan="1" >
 
-             <div class="uib-dropdown"> <b>Frequency:</b>
+             <b>Frequency:</b>
                <select
                        data-ng-model="frequency"
                        data-ng-options="et for et in frequency" class="dropdown pull-right">
                </select>
+
+
+
+
 
                 </div>
             </td>

@@ -323,6 +323,7 @@ div.panel-heading {
   /*height: 380px;
   overflow-y: scroll;
   overflow-x:hidden; */
+  padding-right: 20px;
 }
 .link_tools {
   padding: 8px;
