@@ -51,8 +51,9 @@
         <div class="showDesc" ng-show="showD">
           <button type="submit" ng-click="showD = !showD" class="btn btn-info tpad" uib-tooltip="Show entire description">
             <i class="fa fa-eye"> Hide entire description</i></button>
-          <h3>Description</h3>
-         {{ ping.description }}
+          <span class="input-group-addon" id="addon2"><b>Feed Description:</b></span>
+          <textarea ng-model="ping.description" class="form-control" rows="1" msd-elastic></textarea>
+          <button class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update description</i></button>
 
         </div>
       </div>

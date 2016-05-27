@@ -25,9 +25,11 @@ angular.module('vidPenguin21App', [
     'ui.sortable',
     'toggle-switch',
     'rzModule',
-	'ui.codemirror',
-	'angular-carousel',
-  'slick'
+	  'ui.codemirror',
+	  'angular-carousel',
+    'slick',
+    'ui.select',
+    'monospaced.elastic'
   ]
 
 

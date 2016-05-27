@@ -113,7 +113,7 @@
             <!-- Clicks through child links -->
             <td width="42%" ng-click="show.links = !show.links"><b>{{ feed.title }}</b>
             <br>
-
+              {{feed.$id}}
 
             </td>
             <td width="7%" ng-click="show.links = !show.links" class="tdcenter">{{ (links | filter:{ v: feed.v, active: true}).length }}</td>
@@ -139,9 +139,9 @@
                 <i style="width:12px;" style="width:14px;" class="fa fa-bolt"></i>
               </a>
               <a href ng-click="show.booster = !show.booster" class="feedtool" uib-tooltip="Pro Rank Tracker">
-              <img src="/images/pro-rank-tracker-5f26ac-w240.png" width="36px">
+              <img src="/images/pro-rank-tracker-5f26ac-w240.png" width="35px">
                 </a>
-              <button type="button" ng-csv="links | filter:{ vid: feed.v}" filename="VidPenguinfeeds.csv" class="btn btn-success feedtool" uib-tooltip="Download feed as CSV">
+              <button type="button" ng-csv="links | filter:{ vid: feed.v}" filename="{{ feed.title }}.csv" class="btn btn-success feedtool" uib-tooltip="Download feed as CSV" field-separator="," field-separator=".">
                 <i style="width:12px;" class="fa fa-download"></i>
                </button>
               <a href ng-click="show.drip = !show.drip" class="btn btn-primary feedtool" uib-tooltip="Drip Social Record">
@@ -204,8 +204,9 @@
 
 
               </div>
+                  <br>  {{feed.$id}}
 
-            </td>
+                </td>
 
             <td colspan="2" ng-init="limit = 200">
 
@@ -273,46 +274,41 @@
           <tr ng-show="show.drip" class="drip">
 
             <td colspan="4">
-
               <P>Schedule a drip for this video</P>
-
             </td>
             <td colspan="1">
               <a href ng-click="addDrips()" class="btn btn-primary pull-right" uib-tooltip="Drip Social Record">
-                <i  class="fa fa-coffee"> Schedule All URLS for Drip</i>
+                <i class="fa fa-coffee"> Schedule All URLS for Drip</i>
               </a>
             </td>
           </tr>
 
           <tr ng-show="show.drip" class="drip" >
-            <td colspan="1"></td>
-            <td colspan="1" >
+             <td colspan="1" >
+               <b>Frequency:</b>
+                 <ui-select ng-model="frequency" theme="selectize">
+                 <ui-select-match>
+                   <span ng-bind="$select.frequency.name"></span>
+                 </ui-select-match>
+                 <ui-select-choices repeat="f in (frequency) track by f.id">
+                   <span ng-bind="f.name"></span>
+                 </ui-select-choices>
+                 </ui-select>
+              </td>
+              <td colspan="1" >
 
-             <b>Frequency:</b>
-               <select
-                       data-ng-model="frequency"
-                       data-ng-options="et for et in frequency" class="dropdown pull-right">
-               </select>
-
-
-
-
-
+                <div class="uib-dropdown"><b>Target: </b>
+                  <ui-select ng-model="target" theme="selectize">
+                    <ui-select-match>
+                      <span ng-bind="$select.target.name"></span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="t in (target | filter: $select.search) track by t.id">
+                      <span ng-bind="t.name"></span>
+                    </ui-select-choices>
+                  </ui-select>
                 </div>
-            </td>
-            <td colspan="2" >
-
-            <div class="uib-dropdown"><b>Target: </b>
-                <select
-                        data-ng-model="target"
-                        data-ng-options="tg for tg in target" class="dropdown pull-right">
-                </select>
-               </div>
-            </td>
-            <td colspan="1">
-
-
-            </td>
+              </td>
+              <td colspan="1"> </td>
           </tr>
 
           <!-- Indexer control -->

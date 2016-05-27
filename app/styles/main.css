@@ -394,11 +394,16 @@ img{
   padding-bottom: 99999px;
 }
 .tab_back_right {
+   background: #fff;
+   border-right: 1px solid #ddd;
+   margin-bottom: -99999px;
+   padding-bottom: 99999px;
+ }
+.tab_back_we {
   background: #fff;
   border-right: 1px solid #ddd;
-  margin-bottom: -99999px;
-  padding-bottom: 99999px;
-}
+  min-height: 400px;
+  }
 #equalheight {
   overflow: hidden;
   border-bottom: 1px solid #ddd;
@@ -408,7 +413,7 @@ img{
   color: #555;
   cursor: default;
   background-color: #fff;
-  border: 1px solid #ddd;
+
   font-weight: 700;
 }
 .bottom {
@@ -505,4 +510,7 @@ img{
   min-width: 240px;
   max-width: 680px;
   width: 100%;
+}
+.tab_title {
+  padding-left: 10px;
 }

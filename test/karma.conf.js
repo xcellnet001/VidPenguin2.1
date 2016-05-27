@@ -47,6 +47,11 @@ module.exports = function(config) {
       'bower_components/angular-carousel/dist/angular-carousel.js',
       'bower_components/slick-carousel/slick/slick.min.js',
       'bower_components/angular-slick/dist/slick.js',
+      'bower_components/angular-ui-select/dist/select.js',
+      'bower_components/sifter/sifter.js',
+      'bower_components/microplugin/src/microplugin.js',
+      'bower_components/selectize/dist/js/selectize.js',
+      'bower_components/angular-elastic/elastic.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

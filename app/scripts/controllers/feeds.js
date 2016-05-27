@@ -43,27 +43,39 @@ angular.module('vidPenguin21App')
 
     $scope.drips = $firebaseArray(Ref.child('drips').child(user.uid));
     $scope.addDrip = function(link) {
-      $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v});
+      $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,frequency: $scope.frequency ,target: $scope.target });
       console.log(link);
       window.alert('Adding Social Starter');
     };
 
     $scope.addDrips = function() {
-      if ($scope.feed.$id === '-KIZip2uCCw2AcRLsKEs'){
+
       angular.forEach($scope.links,function(link) {
-        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,frequency: $scope.frequency ,target: $scope.target });
+        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,frequency: $scope.drip.frequency ,target: $scope.drip.target });
         console.log(link);
       });
-      }
+
     };
 
+    //set time freq trigger
     $scope.frequency = [
-      '6 hours'
+      {id: 1, name: '6 Hours'},
+      {id: 2, name: '12 Hours'},
+      {id: 3, name: 'Daily'},
+      {id: 4, name: 'Weekly'},
+      {id: 5, name: 'Monthly'}
     ];
 
+    //set target for post
     $scope.target = [
-      'Blogger'
+      {id: 1, name: 'Blogger'},
+      {id: 2, name: 'Twitter'},
+      {id: 3, name: 'Google'},
+      {id: 4, name: 'WordPress'},
+      {id: 5, name: 'Tumblr'}
     ];
+
+    $scope.selected = { value: $scope.target[0] };
 
     $scope.editorOptions = {
       lineWrapping : true,

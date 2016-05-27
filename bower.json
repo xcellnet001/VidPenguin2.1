@@ -21,7 +21,10 @@
     "angularjs-slider": "^2.11.0",
     "angular-ui-codemirror": "^0.3.0",
     "angular-carousel": "^1.0.1",
-    "angular-slick": "^0.2.1"
+    "angular-slick": "^0.2.1",
+    "angular-ui-select": "^0.17.1",
+    "selectize": "~0.8.5",
+    "angular-elastic": "^2.5.1"
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",

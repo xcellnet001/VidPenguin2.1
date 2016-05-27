@@ -52,77 +52,134 @@
       </a>
       </div>
     </div>
-<hr>
-	<h3>Video Feed</h3>
 
-  <b>SUBMITTED FEED URL ::</b><A HREF="{{ feed.url }}" target="_blank"><br>{{ feed.url }}</A>
-  <br>
 
-  <div class="col-md-3 col-lg-3"><img src="{{ feed.thumb }}" class="img-thumbnail img-responsive" uib-tooltip="{{ feed.title }}" width="100%"></div>
 
-  <div class="col-md-4 col-lg-4">
-    <b>FEED TITLE::</b> {{ feed.title }}<br>
-    <b>FEED ID ::</b> {{ feed.$id }}<br>
-    <b>FEED You Tube ID ::</b> {{ feed.v }}<br>
-
-  </div>
-
+    <br>
   <div class="col-md-12 col-lg-12">
-    <uib-tabset active="active">
-      <uib-tab index="0" heading="Links">
-        <div id="equalheight" class="tab_back_left">
-
-        <div class="link_display">
-          <br>
-          <div ng-repeat="link in links | filter:{ vid: feed.$id}" class="panel panel_link">
-            <div class="feed_link panel-heading" ng-click="show.links = !show.links" >LINK ID :: {{link.$id}}<i class="fa fa-external-link-square pull-right" aria-hidden="true">  Open Link</i></div>
-            <div class="col-md-3 col-lg-3" ng-show="show.links" >
-              <img class="img-thumbnail img-responsive" uib-tooltip="STAR TREK BEYOND Trailer # 2 [Ultra HD 4k]" width="100%" src="https://i.ytimg.com/vi/JFrHA4ww8Us/mqdefault.jpg">
-            </div>
-            <div class="feed_link" ><i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a></div>
-            <div class="iput_frame" ng-show="show.links">
-              <div class="input-group">
-                <span class="input-group-addon" id="addon1"><b>Title:</b></span>
-                <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
-              </div>
-              <br>
-
-              <span class="input-group-addon" id="addon2"><b>Description:</b></span>
-              <textarea class="form-control" rows="5"  ng-model="link.desc"></textarea>
-            </div>
-          </div>
-          <p id="link_form"></p>
-        </div>
+    <div ng-show="!showT"> <h3>TITLE :: {{ feed.title }}&nbsp;&nbsp;<button ng-click="showT = !showT" class="btn btn-info pull-right"><i class="fa fa-pencil-square" aria-hidden="true"> Edit Title</i></button></h3><br>
+    </div>
+  </div>
+  <div ng-show="showT">
+    <div class="col-md-10 col-lg-10">
+      <br>
+    <div class="input-group">
+      <span class="input-group-addon" id="addon1"><b>Title:</b></span>
+      <input type="text" class="form-control" ng-model="feed.title" placeholder="Title of Video" >
+    </div>
+      <br>
       </div>
-      </uib-tab>
-      <uib-tab index="1" heading="Social Starter">
-        <div id="equalheight" class="tab_back_left">
-        Social Starter
-        </div>
-      </uib-tab>
-      <uib-tab index="2" heading="Static title">
-        <div id="equalheight" class="tab_back_left">
-          Static content
-          </div>
-      </uib-tab>
-
-
-      <uib-tab index="3" heading="Raw">
-        <div id="equalheight" class="tab_back_left">
-        {{feed}}
-        <hr>
-        {{links}}</div>
-      </uib-tab>
-
-
-      </uib-tabset>
-
-
-
+    <div class="col-md-2 col-lg-2">
+      <br>
+    <button ng-click="showT = !showT" class="btn btn-warning pull-right"><i class="fa fa-pencil-square" aria-hidden="true"> Save Title</i></button>
+      <br>
+    </div>
     </div>
 
-</div>
+  <div class="col-md-5 col-lg-5"><img src="{{ feed.thumb }}" class="img-thumbnail img-responsive" uib-tooltip="{{ feed.title }}" width="100%"></div>
 
+  <div class="col-md-7 col-lg-7 desc">
+    <b>SUBMITTED FEED URL ::</b><A HREF="{{ feed.url }}" target="_blank"><br>{{ feed.url }}</A>
+    <br>
+    <b>FEED ID ::</b> {{ feed.$id }}<br>
+    <b>FEED You Tube ID ::</b> {{ feed.v }}<br>
+    <div class="showDesc" ng-hide="showD"><P><b>Description:</b> {{ feed.desc | limitTo:125}}...</P><button type="submit" ng-click="showD = !showD" class="btn btn-info tpad" uib-tooltip="Show entire description"><i class="fa fa-eye"> Edit Description</i></button></div>
+
+
+    <div class="showDesc" ng-show="showD">
+      <button type="submit" ng-click="showD = !showD" class="btn btn-info tpad" uib-tooltip="Show entire description">
+        <i class="fa fa-eye"> Hide description</i></button>
+      <span class="input-group-addon" id="addon2"><b>Feed Description:</b></span>
+      <textarea ng-model="feed.desc" class="form-control" rows="1" msd-elastic></textarea>
+      <button class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update description</i></button>
+
+    </div>
+    </div>
+
+  <!-- begin tabs -->
+        <div class="row"></div>
+          <div class="col-md-12 col-lg-12 offset2">
+            <uib-tabset active="active">
+              <!-- Links tab -->
+              <uib-tab index="0" heading="Links">
+                <div id="equalheight" class="tab_back_we">
+
+                  <div class="tab_title">
+                    <h4>Feed Links</h4>
+                  </div>
+
+                <div class="link_display">
+
+                  <div ng-repeat="link in links | filter:{ vid: feed.$id}" class="panel panel_link">
+                    <div class="feed_link panel-heading" ng-click="show.links = !show.links" >LINK ID :: {{link.$id}}<i class="fa fa-external-link-square pull-right" aria-hidden="true">  Edit Link</i></div>
+
+                    <!-- Links thumb -->
+
+                    <div class="col-md-3 col-lg-3" ng-show="show.links" >
+                      <img class="img-thumbnail img-responsive" uib-tooltip="{{link.title}}" width="100%" src="https://i.ytimg.com/vi/{{feed.v}}/mqdefault.jpg">
+                      <button class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update description</i></button>
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="addon1"><b>Title:</b></span>
+                      <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
+                    </div>
+                    <div class="feed_link" ><i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a></div>
+                    <div class="iput_frame" ng-show="show.links">
+                      <span class="input-group-addon" id="addon2"><b>Description:</b></span>
+                      <textarea class="form-control" rows="1"  ng-model="link.desc" msd-elastic></textarea>
+                    </div>
+                  </div>
+                  <p id="link_form"></p>
+                </div>
+              </div>
+              </uib-tab>
+
+              <!-- Social Starter tab -->
+
+              <uib-tab index="1" heading="Social Starter">
+                <div id="equalheight" class="tab_back_we">
+                  <div class="tab_title">
+                    <h4>Social Starter</h4>
+                  </div>
+                     <div ng-repeat="drip in drips" class="panel panel_link" >
+                       <div class="feed_link panel-heading">Social Starter ID :: {{drip.$id}}</div>
+
+                    {{drip}}
+                    </div>
+                </div>
+              </uib-tab>
+
+              <!-- XML tab -->
+
+              <uib-tab index="2" heading="XML">
+                <div id="equalheight" class="tab_back_we">
+                  <div class="tab_title"><h4>Raw Feed XML</h4></div>
+                  </div>
+              </uib-tab>
+
+              <!-- JSON tab -->
+
+              <uib-tab index="3" heading="JSON">
+                <div id="equalheight" class="tab_back_we">
+                  <div class="tab_title"><h4>Raw Feed JSON</h4></div>
+
+                {{feed}}
+
+                <hr>
+                  <div class="tab_title"><h4>Raw Links JSON</h4></div>
+
+                {{links}}</div>
+              </uib-tab>
+
+
+              </uib-tabset>
+
+
+
+            </div>
+
+        </div>
+        </div>
 
 
 
