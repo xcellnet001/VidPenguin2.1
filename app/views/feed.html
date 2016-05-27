@@ -71,7 +71,7 @@
       </div>
     <div class="col-md-2 col-lg-2">
       <br>
-    <button ng-click="showT = !showT" class="btn btn-warning pull-right"><i class="fa fa-pencil-square" aria-hidden="true"> Save Title</i></button>
+    <button ng-click="updateTitle(); showT = !showT" class="btn btn-warning pull-right"><i class="fa fa-pencil-square" aria-hidden="true"> Save Title</i></button>
       <br>
     </div>
     </div>
@@ -87,17 +87,17 @@
 
 
     <div class="showDesc" ng-show="showD">
-      <button type="submit" ng-click="showD = !showD" class="btn btn-info tpad" uib-tooltip="Show entire description">
-        <i class="fa fa-eye"> Hide description</i></button>
+      <button type="submit" ng-click="showD = !showD" class="btn btn-warning tpad" uib-tooltip="Show entire description">
+        <i class="fa fa-eye"> Update description</i></button>
       <span class="input-group-addon" id="addon2"><b>Feed Description:</b></span>
       <textarea ng-model="feed.desc" class="form-control" rows="1" msd-elastic></textarea>
-      <button class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update description</i></button>
+
 
     </div>
     </div>
 
   <!-- begin tabs -->
-        <div class="row"></div>
+
           <div class="col-md-12 col-lg-12 offset2">
             <uib-tabset active="active">
               <!-- Links tab -->
@@ -119,6 +119,7 @@
                       <img class="img-thumbnail img-responsive" uib-tooltip="{{link.title}}" width="100%" src="https://i.ytimg.com/vi/{{feed.v}}/mqdefault.jpg">
                       <button class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update description</i></button>
                     </div>
+
                     <div class="input-group">
                       <span class="input-group-addon" id="addon1"><b>Title:</b></span>
                       <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
@@ -129,8 +130,10 @@
                       <textarea class="form-control" rows="1"  ng-model="link.desc" msd-elastic></textarea>
                     </div>
                   </div>
+
                   <p id="link_form"></p>
-                </div>
+                  </div>
+
               </div>
               </uib-tab>
 

@@ -20,10 +20,18 @@ angular.module('vidPenguin21App')
     var feed = $firebaseObject(Ref.child('feeds/'+user.uid+'/'+$scope.fid));
     feed.$bindTo($scope, 'feed');
 
+    // synchronize a read-only, synchronized array
     $scope.links = $firebaseArray(Ref.child('links').child(user.uid));
-
-	    // synchronize a read-only, synchronized array of of user videos
     $scope.feeds = $firebaseArray(Ref.child('feeds').child(user.uid));
 	  $scope.drips = $firebaseArray(Ref.child('drips').child(user.uid));
+
+    $scope.updateTitle = function() {
+      window.alert('You have updated' + feed.title);
+    };
+
+    $scope.updateDesc = function() {
+      window.alert('You have updated' + feed.desc);
+    };
+
 
   });
