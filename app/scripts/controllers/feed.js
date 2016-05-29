@@ -33,5 +33,8 @@ angular.module('vidPenguin21App')
       window.alert('You have updated' + feed.desc);
     };
 
+    $scope.updateLink = function() {
+      window.alert('You have updated the link for ' + $scope.link);
+    };
 
   });

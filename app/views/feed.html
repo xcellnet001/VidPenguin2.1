@@ -117,7 +117,7 @@
 
                     <div class="col-md-3 col-lg-3" ng-show="show.links" >
                       <img class="img-thumbnail img-responsive" uib-tooltip="{{link.title}}" width="100%" src="https://i.ytimg.com/vi/{{feed.v}}/mqdefault.jpg">
-                      <button class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update description</i></button>
+                      <button ng-click="updateLink(link.$id)" class="btn btn-warning tpad"><i class="fa fa-hand-spock-o"> Update Link</i></button>
                     </div>
 
                     <div class="input-group">
