@@ -35,6 +35,7 @@ angular.module('vidPenguin21App')
 
     $scope.updateLink = function() {
       window.alert('You have updated the link for ' + $scope.link);
+
     };
 
   });
