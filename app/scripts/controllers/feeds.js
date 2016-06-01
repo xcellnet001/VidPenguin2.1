@@ -8,7 +8,7 @@
  * Controller of the vidPenguin21App
  */
 angular.module('vidPenguin21App')
-  .controller('FeedsCtrl', function ($scope, user, Auth, $filter, Ref, $sce, $firebaseArray, $firebaseObject, $uibModal, $timeout) {
+  .controller('FeedsCtrl', function ($scope, user, Auth, $filter, Ref, $sce, $firebaseArray, $firebaseObject, $uibModal, $timeout, $window) {
 
     //Get UID
     $scope.user = user;
@@ -42,21 +42,38 @@ angular.module('vidPenguin21App')
     $scope.feeds.$loaded().catch(alert);
 
     $scope.drips = $firebaseArray(Ref.child('drips').child(user.uid));
+
     $scope.addDrip = function(link) {
-      $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,frequency: $scope.frequency ,target: $scope.target });
+      $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,vid: link.vid, frequency: $scope.frequency ,target: $scope.target });
       console.log(link);
       window.alert('Adding Social Starter');
     };
 
-    $scope.addDrips = function() {
+    $scope.addDrips = function(feed) {
+      console.log(feed);
       console.log($scope.frequency.selected.id);
       console.log($scope.target.selected.id);
 
       angular.forEach($scope.links,function(link) {
+        if (feed.$id === link.vid) {
+          console.log(link);
 
-        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,type: 'a', frequency: $scope.frequency.selected.id ,target: $scope.target.selected.id,triggered: '0' });
-        console.log(link);
-      });
+          $scope.drips.$add({
+            user: $scope.user.uid,
+            SubmitDate: $scope.milliseconds,
+            linkID: link.$id,
+            v: link.v,
+            vid: link.vid,
+            type: 'a',
+            frequency: $scope.frequency.selected.id,
+            target: $scope.target.selected.id,
+            triggered: '0'
+          });
+          console.log(link.vid);
+        }
+        });
+
+      $window.location.href = '/#/drip';
 
     };
 
@@ -85,7 +102,7 @@ angular.module('vidPenguin21App')
       lineWrapping : true,
       lineNumbers: true,
       readOnly: 'nocursor',
-      mode: 'xml',
+      mode: 'xml'
     };
 
     $scope.toggleAnimation = function () {

@@ -111,13 +111,13 @@
             </td>
 
             <!-- Clicks through child links -->
-            <td width="42%" ng-click="show.links = !show.links"><b>{{ feed.title }}</b>
+            <td width="35%" ng-click="show.links = !show.links"><b>{{ feed.title }}</b>
             <br>
               {{feed.$id}}
 
             </td>
             <td width="7%" ng-click="show.links = !show.links" class="tdcenter">{{ (links | filter:{ v: feed.v, active: true}).length }}</td>
-            <td width="19%" ng-click="show.links = !show.links">{{feed.date | date:'medium'}}</td>
+            <td ng-click="show.links = !show.links">{{feed.date | date:'medium'}}</td>
 
 
             <!-- application actions -->
@@ -152,35 +152,26 @@
               </a>
               <a href="#/feeds" ng-click="feeds.$remove(feed, deleteIt)" class="btn btn-danger feedtool" uib-tooltip="Delete Record">
                 <i style="width:12px;" class="fa fa-trash"></i></a>
-
             </td>
-
-
-
           </tr>
+
           <!-- Video -->
           <tr ng-show="activePosition == $index">
           <td colspan="3"><youtube-video video-url="feed.url"  player-width="'100%'" player-width="'100%'"  player="bestPlayer"></youtube-video></td>
             <td colspan="2">
               <h4><b>Video Title:</b> {{ feed.title }}</h4>
-
             </td>
           </tr>
 
           <!-- Tools & links -->
           <tr ng-show="show.links" >
             <td colspan="5">
-              <!-- Tools -->
-
-
+              <!-- Tools ** Not used but leave as alt for design change **-->
             </td>
-
           </tr>
 
           <tr ng-show="show.links" ng-repeat="link in links | filter:{ vid: feed.$id, active: true}" class="links">
-
             <td colspan="1" class="link_row_fill">
-
               <!-- If t value is greater than zero -->
                  <a href="{{link.url}}{{feed.v}}&t={{feed.t}}" ng-if="feed.t > 0" target="_blank" class="btn btn-primary feedtool" uib-tooltip="Open Link">
                   <i class="fa fa-youtube-play"></i></a>
@@ -196,30 +187,26 @@
               </a>            </td>
                 <td colspan="2" >
 
-                <div class="link_header">{{link.title}}</div>
-                <div class=""><b>Link id</b> :: {{link.id}}</div>
+                  <div class="link_header">{{link.title}}</div>
+                  <div class=""><b>Link id</b> :: {{link.id}}</div>
 
-                <div ng-repeat="drip in drips | filter:{linkID: link.$id}">
-              <b>Schedule Social Starter</b> :: <!-- <a href="/#/drip/#{{drip.$id}}"> -->{{ drip.$id }}</a>
+                  <div ng-repeat="drip in drips | filter:{linkID: link.$id}">
+                      <b>Schedule Social Starter</b> :: <!-- <a href="/#/drip/#{{drip.$id}}"> -->{{ drip.$id }}</a>
 
 
-              </div>
+                  </div>
+
                   <br>  {{feed.$id}}
 
                 </td>
 
             <td colspan="2" ng-init="limit = 200">
 
-                    {{link.desc | limitTo: limit}}
+              {{link.desc | limitTo: limit}}
               {{link.$index}}
 
-
-
             </td>
-
           </tr>
-
-
           <!-- Show JSON -->
           <tr ng-show="show.JSON" class="JSON">
             <td colspan="5">
@@ -260,47 +247,40 @@
           <!-- Add Social Stater / Drip -->
           <tr ng-show="show.drip" class="drip">
 
-            <td colspan="4">
+            <td colspan="2">
               <P>Schedule a drip for this video{{feed.$id}}</P>
+              <!-- Add Social Stater / Drip Target-->
+              <div class="uib-dropdown"><b>Target: </b>
+                <ui-select ng-model="target.selected.id" theme="selectize">
+                  <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                  </ui-select-match>
+                  <ui-select-choices repeat="t in (target | filter: $select.search) track by t.id">
+                    <span ng-bind="t.name"></span>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+              <!-- Add Social Stater / Drip Frequency-->
+              <b>Frequency:</b>
+              <ui-select ng-model="frequency.selected.id" theme="selectize">
+                <ui-select-match>
+                  <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="f in (frequency | filter: $select.search) track by f.id">
+                  <span ng-bind="f.name"></span>
+                </ui-select-choices>
+              </ui-select>
             </td>
+            <td colspan="2"></td>
             <td colspan="1">
-              <a href ng-click="addDrips(feed.$id)" class="btn btn-primary pull-right" uib-tooltip="Drip Social Record">
+              <a href ng-click="addDrips(feed)" class="btn btn-primary pull-right" uib-tooltip="Drip Social Record">
                 <i class="fa fa-coffee"> Schedule All Links for Social Starter</i>
               </a>
+
             </td>
           </tr>
 
-          <tr ng-show="show.drip" class="drip" >
-             <td colspan="1" >
-               <b>Frequency:</b>
-                 <ui-select ng-model="frequency.selected.id" theme="selectize">
-                   <ui-select-match>
-                     <span ng-bind="$select.selected.name"></span>
-                   </ui-select-match>
-                 <ui-select-choices repeat="f in (frequency | filter: $select.search) track by f.id">
-                   <span ng-bind="f.name"></span>
-                 </ui-select-choices>
-                 </ui-select>
-              </td>
-              <td colspan="1" >
 
-                <div class="uib-dropdown"><b>Target: </b>
-                  <ui-select ng-model="target.selected.id" theme="selectize">
-                    <ui-select-match>
-                      <span ng-bind="$select.selected.name"></span>
-                    </ui-select-match>
-                    <ui-select-choices repeat="t in (target | filter: $select.search) track by t.id">
-                      <span ng-bind="t.name"></span>
-                    </ui-select-choices>
-                  </ui-select>
-                </div>
-              </td>
-              <td colspan="1">
-
-              </td>
-            <td colspan="1"> </td>
-            <td colspan="1"> </td>
-          </tr>
 
           <!-- Indexer control -->
           <tr ng-show="show.indexer" class="indexer">
