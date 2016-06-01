@@ -19,8 +19,8 @@ angular.module('vidPenguin21App')
 
     $scope.isCollapsed = true;
 
-    $scope.sortType     = 'title'; // set the default sort type
-    $scope.sortReverse  = false;  // set the default sort order
+    $scope.sortType     = 'date'; // set the default sort type
+    $scope.sortReverse  = true;  // set the default sort order
     $scope.searchFeeds   = '';     // set the default search/filter term
     $scope.currentPage = 0;       //set pagantion start point
     $scope.pageSize = 10;         // set size of return of records
@@ -49,9 +49,12 @@ angular.module('vidPenguin21App')
     };
 
     $scope.addDrips = function() {
+      console.log($scope.frequency.selected.id);
+      console.log($scope.target.selected.id);
 
       angular.forEach($scope.links,function(link) {
-        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,frequency: $scope.drip.frequency ,target: $scope.drip.target });
+
+        $scope.drips.$add({user: $scope.user.uid, SubmitDate: $scope.milliseconds, linkID: link.$id, v: link.v,type: 'a', frequency: $scope.frequency.selected.id ,target: $scope.target.selected.id,triggered: '0' });
         console.log(link);
       });
 
@@ -74,6 +77,7 @@ angular.module('vidPenguin21App')
       {id: 4, name: 'WordPress'},
       {id: 5, name: 'Tumblr'}
     ];
+
 
     $scope.selected = { value: $scope.target[0] };
 

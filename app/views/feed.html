@@ -108,12 +108,26 @@
                     <h4>Feed Links</h4>
                   </div>
 
+                  <!-- Individual Link Panel -->
+
                 <div class="link_display">
-
                   <div ng-repeat="link in links | filter:{ vid: feed.$id}" class="panel panel_link">
-                    <div class="feed_link panel-heading" ng-click="show.links = !show.links" >LINK ID :: {{link.$id}}<i class="fa fa-external-link-square pull-right" aria-hidden="true">  Edit Link</i></div>
 
-                    <!-- Links thumb -->
+                    <!-- Link Panel Heading -->
+
+                    <div class="feed_link panel-heading" ng-click="show.links = !show.links" >
+                      LINK ID :: {{link.$id}}<i class="fa fa-external-link-square pull-right" aria-hidden="true">  Edit Link</i>
+                    </div>
+
+                    <div class="input-group">
+                      <span class="input-group-addon" id="addon1"><b>Title:</b></span>
+                      <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
+                    </div>
+                    <div class="feed_link" >
+                      <i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a>
+                    </div>
+
+                    <!-- Link thumb -->
 
                     <div class="col-md-3 col-lg-3" ng-show="show.links" >
                       <img class="img-thumbnail img-responsive" uib-tooltip="{{link.title}}" width="100%" src="https://i.ytimg.com/vi/{{feed.v}}/mqdefault.jpg">
@@ -121,20 +135,20 @@
                       <button ng-click="links.$remove(link)" class="btn btn-danger tpad"><i class="fa fa-hand-spock-o"> Remove Link</i></button>
                     </div>
 
-                    <div class="input-group">
-                      <span class="input-group-addon" id="addon1"><b>Title:</b></span>
-                      <input type="text" class="form-control" ng-model="link.title" placeholder="Title of Video" >
-                    </div>
-                    <div class="feed_link" ><i class="fa fa-youtube-play fa-lg"></i> <a href="{{link.url}}{{feed.v}}" target="_blank">{{link.url}}{{feed.v}} :: Click to watch</a></div>
-                    <div class="iput_frame" ng-show="show.links">
-                      <span class="input-group-addon" id="addon2"><b>Description:</b></span>
-                      <textarea class="form-control" rows="1"  ng-model="link.desc" msd-elastic></textarea>
-                    </div>
-                  </div>
 
-                  <p id="link_form"></p>
-                  </div>
 
+
+                    <!-- Link Panel Edit -->
+
+
+
+                      <div class="iput_frame" ng-show="show.links">
+                        <span class="input-group-addon" id="addon2"><b>Description:</b></span>
+                        <textarea class="form-control" rows="1"  ng-model="link.desc" msd-elastic></textarea>
+                      </div>
+
+                  </div>
+                </div>
               </div>
               </uib-tab>
 
@@ -147,8 +161,10 @@
                   </div>
                      <div ng-repeat="drip in drips" class="panel panel_link" >
                        <div class="feed_link panel-heading">Social Starter ID :: {{drip.$id}}</div>
+                       <b>Submitted</b> :: {{drip.SubmitDate | date:'medium'}}
 
-                    {{drip}}
+                       {{drip}}
+
                     </div>
                 </div>
               </uib-tab>

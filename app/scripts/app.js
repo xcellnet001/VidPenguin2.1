@@ -11,6 +11,7 @@
 angular.module('vidPenguin21App', [
     'ngAnimate',
     'ngCookies',
+    'ui.select',
     'ngResource',
     'ngRoute',
     'ngSanitize',
@@ -28,8 +29,8 @@ angular.module('vidPenguin21App', [
 	  'ui.codemirror',
 	  'angular-carousel',
     'slick',
-    'ui.select',
-    'monospaced.elastic'
+    'monospaced.elastic',
+    'ngclipboard'
   ]
 
 

@@ -101,7 +101,7 @@
 
 
             </thead>
-            <tbody ng-repeat="feed in feeds | orderBy:'date':reverseorder | filter:searchFeeds">
+            <tbody ng-repeat="feed in feeds | orderBy:'date' | reverse | filter:searchFeeds">
           <tr>
 
             <!-- Opens Video -->
@@ -117,7 +117,7 @@
 
             </td>
             <td width="7%" ng-click="show.links = !show.links" class="tdcenter">{{ (links | filter:{ v: feed.v, active: true}).length }}</td>
-            <td width="16%" ng-click="show.links = !show.links">{{feed.date | date:"MM/dd/yyyy '/' h:mma"}}</td>
+            <td width="19%" ng-click="show.links = !show.links">{{feed.date | date:'medium'}}</td>
 
 
             <!-- application actions -->
@@ -141,7 +141,7 @@
               <a href ng-click="show.booster = !show.booster" class="feedtool" uib-tooltip="Pro Rank Tracker">
               <img src="/images/pro-rank-tracker-5f26ac-w240.png" width="35px">
                 </a>
-              <button type="button" ng-csv="links | filter:{ vid: feed.v}" filename="{{ feed.title }}.csv" class="btn btn-success feedtool" uib-tooltip="Download feed as CSV" field-separator="," field-separator=".">
+              <button type="button" ng-csv="links | filter:{ vid: feed.$id, active: true}" filename="{{ feed.title }}.csv" class="btn btn-success feedtool" uib-tooltip="Download feed as CSV" field-separator="," field-separator=".">
                 <i style="width:12px;" class="fa fa-download"></i>
                </button>
               <a href ng-click="show.drip = !show.drip" class="btn btn-primary feedtool" uib-tooltip="Drip Social Record">
@@ -158,7 +158,7 @@
 
 
           </tr>
-          <!-- Modal Video -->
+          <!-- Video -->
           <tr ng-show="activePosition == $index">
           <td colspan="3"><youtube-video video-url="feed.url"  player-width="'100%'" player-width="'100%'"  player="bestPlayer"></youtube-video></td>
             <td colspan="2">
@@ -223,44 +223,31 @@
           <!-- Show JSON -->
           <tr ng-show="show.JSON" class="JSON">
             <td colspan="5">
+              <button class="btn btn-primary pull-right" ngclipboard data-clipboard-text="{{feed|json}}">
+                <i class="fa fa-clipboard" aria-hidden="true"></i> Cut to clipboard
+              </button>
               <h3>JSON</h3>
-                <div ui-codemirror ui-codemirror-opts="editorOptions">
-             {
-                  "title":"{{feed.title}}","link": "{{feed.url}}"
-              <div ng-repeat="link in links | filter:{ vid: feed.$id, active: true}">
-                "link":"{{link.url}}{{link.v}}","title":"{{link.title}}", "description":{{link.desc}}
-              </div>
+
+              <pre>
+                <div id="rawJSON">
+                {
+                "feeds" :{{feed|json}}
+                "links" :
+                <div ng-repeat="link in links | filter:{ vid: feed.$id, active: true}">
+                    {{link||json}}
+                </div>
                 }
 
-                  </div>
-
-
+              </pre>
+      </div>
             </td>
           </tr>
-
 
           <!-- Show XML -->
           <tr ng-show="show.XML" class="XML">
             <td colspan="5">
               <h3>XML</h3>
-                <div ui-codemirror ui-codemirror-opts="editorOptions">
-
-               <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
-                 <channel>
-                   <title>{{feed.title}}</title>
-                   <description></description>
-                   <link>{{feed.url}}</link>
-                      <div ng-repeat="link in links | filter:{ vid: feed.$id, active: true}">
-                        <item>
-                          <title>{{link.title}}</title>
-                          <description>{{link.desc}}</description>
-                          <link>{{link.url}}{{link.v}}</link>
-                        </item>
-                      </div>
-                 </channel>
-                 </rss>
-
-                 </div>
+              <pre>{{feed|json}}</pre>
 
             </td>
           </tr>
@@ -270,15 +257,15 @@
             <td colspan="5">Silly Syndwire</td>
           </tr>
 
-          <!-- Add Drip -->
+          <!-- Add Social Stater / Drip -->
           <tr ng-show="show.drip" class="drip">
 
             <td colspan="4">
-              <P>Schedule a drip for this video</P>
+              <P>Schedule a drip for this video{{feed.$id}}</P>
             </td>
             <td colspan="1">
-              <a href ng-click="addDrips()" class="btn btn-primary pull-right" uib-tooltip="Drip Social Record">
-                <i class="fa fa-coffee"> Schedule All URLS for Drip</i>
+              <a href ng-click="addDrips(feed.$id)" class="btn btn-primary pull-right" uib-tooltip="Drip Social Record">
+                <i class="fa fa-coffee"> Schedule All Links for Social Starter</i>
               </a>
             </td>
           </tr>
@@ -286,11 +273,11 @@
           <tr ng-show="show.drip" class="drip" >
              <td colspan="1" >
                <b>Frequency:</b>
-                 <ui-select ng-model="frequency" theme="selectize">
-                 <ui-select-match>
-                   <span ng-bind="$select.frequency.name"></span>
-                 </ui-select-match>
-                 <ui-select-choices repeat="f in (frequency) track by f.id">
+                 <ui-select ng-model="frequency.selected.id" theme="selectize">
+                   <ui-select-match>
+                     <span ng-bind="$select.selected.name"></span>
+                   </ui-select-match>
+                 <ui-select-choices repeat="f in (frequency | filter: $select.search) track by f.id">
                    <span ng-bind="f.name"></span>
                  </ui-select-choices>
                  </ui-select>
@@ -298,9 +285,9 @@
               <td colspan="1" >
 
                 <div class="uib-dropdown"><b>Target: </b>
-                  <ui-select ng-model="target" theme="selectize">
+                  <ui-select ng-model="target.selected.id" theme="selectize">
                     <ui-select-match>
-                      <span ng-bind="$select.target.name"></span>
+                      <span ng-bind="$select.selected.name"></span>
                     </ui-select-match>
                     <ui-select-choices repeat="t in (target | filter: $select.search) track by t.id">
                       <span ng-bind="t.name"></span>
@@ -308,7 +295,11 @@
                   </ui-select>
                 </div>
               </td>
-              <td colspan="1"> </td>
+              <td colspan="1">
+
+              </td>
+            <td colspan="1"> </td>
+            <td colspan="1"> </td>
           </tr>
 
           <!-- Indexer control -->
