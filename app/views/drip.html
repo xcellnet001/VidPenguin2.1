@@ -1,89 +1,100 @@
 <!-- Sidebar -->
-<div class="col-md-2 col-lg-2">
-
-
-  <h4>Need help ?</h4> <p>Check our Facebook group</p>
-  <a class="btn btn-info btn-block" href="https://www.facebook.com/groups/VidPenguinBetaGroup/" target="_blank"><i class="fa fa-facebook"></i> VidPenguin</a>
-  <hr>
-  <p>Prefer to email ?</p>
-  <a class="btn btn-success btn-block" href="mailto:support@vidpenguin.com"><i class="fa fa-envelope-o"></i> support</a>
-  <br>
-  <a target="_blank" href="http://vidpenguin.com/Coaching" ><img src="/images/VidPenguinCoachingCalls.jpg" width="100%"></a>
-</div>
+  <div class="col-md-2 col-lg-2">
+    <h4>Need help ?</h4> <p>Check our Facebook group</p>
+    <a class="btn btn-info btn-block" href="https://www.facebook.com/groups/VidPenguinBetaGroup/" target="_blank"><i class="fa fa-facebook"></i> VidPenguin</a>
+    <hr>
+    <p>Prefer to email ?</p>
+    <a class="btn btn-success btn-block" href="mailto:support@vidpenguin.com"><i class="fa fa-envelope-o"></i> support</a>
+    <br>
+    <a target="_blank" href="http://vidpenguin.com/Coaching" ><img src="/images/VidPenguinCoachingCalls.jpg" width="100%"></a>
+  </div>
 
 <!-- Main -->
-<div class="col-md-10 col-lg-10">
-  <div class="state-overview">
-    <!-- Stats display -->
-    <div class="col-md-4 col-xs-12">
-      <a href="/#/feeds">
-      <div class="symbol terques">
-        <i class="fa fa-rss"></i><div class="value"> <h1 class="length">{{ (feeds).length }}  </h1> Video Feeds</div>
-
+  <div class="col-md-10 col-lg-10">
+    <div class="state-overview">
+      <!-- Stats display -->
+      <div class="col-md-4 col-xs-12">
+        <a href="/#/feeds">
+        <div class="symbol terques">
+          <i class="fa fa-rss"></i><div class="value"> <h1 class="length">{{ (feeds).length }}  </h1> Video Feeds</div>
+          </div>
+      </a>
       </div>
-    </a>
-    </div>
 
-    <div class="col-md-4 col-xs-12">
-      <a href="/#/feeds">
-      <div class="symbol red">
-        <i class="fa fa-video-camera"></i>
-
-        <div class="value">
-          <h1 class="length">{{ (links | filter:{ v: feed.v, active: true}).length }}</h1>
-          Links Pinged  </div>
-      </div>
-    </a>
-    </div>
-    <div class="col-md-4 col-xs-12">
-      <a href="/#/drip">
-        <div class="symbol bluee">
-          <i class="fa fa-coffee"></i>
+      <div class="col-md-4 col-xs-12">
+        <a href="/#/feeds">
+        <div class="symbol red">
+          <i class="fa fa-video-camera"></i>
 
           <div class="value">
-            <h1 class="length">{{ (drips).length }}</h1>
-            Social Starters Scheduled  </div>
+            <h1 class="length">{{ (links | filter:{ v: feed.v, active: true}).length }}</h1>
+            Links Pinged  </div>
         </div>
-
       </a>
-    </div>
-  </div>
-  </div>
-  <!-- Top of main -->
-<div class="col-md-10 col-lg-10">
-  <h3>Social Starter</h3>
-
-  <table class="table table-striped table-hover table-responsive" >
-
-  <tr ng-repeat="drip in drips" class="links">
-    <td width="5%"><img src="https://i.ytimg.com/vi/{{drip.v}}/default.jpg"></td>
-
-    <td width="5%" ng-repeat="l in links | filter:{ $id: drip.linkID}" width="15%">
-
-      <a href="{{l.url}}{{l.v}}" id="{{drip.$id}}"name="{{drip.$id}}">{{l.url}}{{l.v}}</a>
-    </td>
-
-    <td ng-repeat="l in links | filter:{ $id: drip.linkID}" width="40%">
-      {{l.title}}<br>
-      {{l.v}}<br>
-    </td>
-
-    <td width="40%">
-      <div ng-click="drips.$remove(drip)" class="btn btn-danger feedtool pull-right" uib-tooltip="Delete Record">
-        <i style="width:12px;" class="fa fa-trash"></i></a>
-        </div>
-      <div ng-click="manualEX(drip.linkID)" class="btn btn-primary feedtool pull-right" uib-tooltip="Manual Excute Record">
-        <i style="width:12px;" class="fa fa-bomb"></i></a>
       </div>
-    </td>
+      <div class="col-md-4 col-xs-12">
+        <a href="/#/drip">
+          <div class="symbol bluee">
+            <i class="fa fa-coffee"></i>
 
-    <!-- output for development
-    <tr ng-repeat="drip in drips" class="links">
-      <td colspan="4" width="100%">{{json}}</td>
-    </tr>
--->
-  </tr>
+            <div class="value">
+              <h1 class="length">{{ (drips).length }}</h1>
+              Social Starters Scheduled  </div>
+          </div>
+
+        </a>
+      </div>
+    </div>
+    </div>
+    <!-- Top of main -->
+  <div class="col-md-10 col-lg-10">
+    <h3>Social Starter</h3>
+
+    <table class="table table-striped table-hover table-responsive" >
+
+      <tr ng-repeat="drip in drips" class="links">
+        <td colspan="4" class="red" ng-show="drip.triggered === '0'">
+          <i class="fa fa-thumbs-o-down fa-2x fa-inverse" aria-hidden="true"></i>
+        </td>
+        <td colspan="4" class="green" ng-show="drip.triggered === '1'">
+          <i class="fa fa-thumbs-o-up fa-2x fa-inverse" aria-hidden="true"></i>
+        </td>
+        <td colspan="4" class="yellow" ng-show="drip.triggered === '2'">
+          <i class="fa fa-hand-paper-o fa-2x fa-inverse" aria-hidden="true"></i>
+        </td>
+          <td width="5%">
+            <img src="https://i.ytimg.com/vi/{{drip.v}}/default.jpg">
+          </td>
+
+
+          <td ng-repeat="l in links | filter:{ $id: drip.linkID}" width="40%">
+            <h5>{{l.title}}</h5>
+            <a href="{{l.url}}{{l.v}}" id="{{drip.$id}}"name="{{drip.$id}}">{{l.url}}{{l.v}}</a><br>
+
+          </td>
+
+        <td ng-repeat="l in links | filter:{ $id: drip.linkID}" width="15%">
+          <b>Date Submitted :: </b><br>{{drip.SubmitDate | date:'medium'}}<br>
+          <b>Date Scheduled :: </b><br>{{drip.scheduled | date:'medium'}}<br>
+          <b>Target :: {{drip.target.name}}</b>
+        </td>
+
+         <td width="40%">
+            <div ng-click="drips.$remove(drip)" class="btn btn-danger feedtool pull-right" uib-tooltip="Delete Record">
+              <i style="width:12px;" class="fa fa-trash"></i></a>
+              </div>
+            <div ng-click="manualEX(drip.linkID)" class="btn btn-primary feedtool pull-right" uib-tooltip="Manual Excute Record">
+              <i style="width:12px;" class="fa fa-bomb"></i></a>
+            </div>
+         </td>
+
+          <!-- output for development
+          <tr ng-repeat="drip in drips" class="links">
+            <td colspan="4" width="100%">{{json}}</td>
+          </tr>
+          -->
+        </tr>
 
     </table>
-  <div id="drips" ng-show="!drips.length">You have no Social Starters and that makes us sad. Go back to <a ng-show-auth="" href="/#/feeds" class=""><i class="fa fa-rss fa-lg"></i> Feeds</a> and do something for the love of God. I mean why do you think I spent so much time building this anyway? </div>
-</div>
+    <div id="drips" ng-show="!drips.length">You have no Social Starters and that makes us sad. Go back to <a ng-show-auth="" href="/#/feeds" class=""><i class="fa fa-rss fa-lg"></i> Feeds</a> and do something for the love of God. I mean why do you think I spent so much time building this anyway? </div>
+  </div>

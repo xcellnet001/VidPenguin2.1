@@ -52,11 +52,14 @@ angular.module('vidPenguin21App')
     $scope.addDrips = function(feed) {
       console.log(feed);
       console.log($scope.frequency.selected.id);
+      console.log($scope.frequency.selected.id.t);
       console.log($scope.target.selected.id);
 
       angular.forEach($scope.links,function(link) {
         if (feed.$id === link.vid) {
           console.log(link);
+          //$scope.extime = '';
+          //console.log(extime);
 
           $scope.drips.$add({
             user: $scope.user.uid,
@@ -67,6 +70,7 @@ angular.module('vidPenguin21App')
             type: 'a',
             frequency: $scope.frequency.selected.id,
             target: $scope.target.selected.id,
+            scheduled: '1496378054',
             triggered: '0'
           });
           console.log(link.vid);
@@ -79,11 +83,11 @@ angular.module('vidPenguin21App')
 
     //set time freq trigger
     $scope.frequency = [
-      {id: 1, name: '6 Hours'},
-      {id: 2, name: '12 Hours'},
-      {id: 3, name: 'Daily'},
-      {id: 4, name: 'Weekly'},
-      {id: 5, name: 'Monthly'}
+      {id: 1, name: '6 Hours', t: '21600'},
+      {id: 2, name: '12 Hours', t: '43200'},
+      {id: 3, name: 'Daily', t:'86400'},
+      {id: 4, name: 'Weekly', t:'604800'},
+      {id: 5, name: 'Monthly', t:'2629743'}
     ];
 
     //set target for post

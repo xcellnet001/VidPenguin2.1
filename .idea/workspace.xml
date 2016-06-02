@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29fec843-1356-4e0f-b3fc-281f62f70552" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/drip.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/drip.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/feeds.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/feeds.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/main.css" afterPath="$PROJECT_DIR$/app/styles/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drip.html" afterPath="$PROJECT_DIR$/app/views/drip.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/feeds.html" afterPath="$PROJECT_DIR$/app/views/feeds.html" />
     </list>
     <ignored path="VidPenguin2.1.iws" />
@@ -27,21 +31,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="feeds.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/feeds.html">
+      <file leaf-file-name="feeds.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/feeds.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.343284">
-              <caret line="168" column="74" selection-start-line="168" selection-start-column="74" selection-end-line="168" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feeds.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/feeds.js">
+      <file leaf-file-name="feeds.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/feeds.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.449679">
-              <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+            <state vertical-scroll-proportion="-14.582089">
+              <caret line="122" column="41" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/styles/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.597015">
+              <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="drip.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/drip.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.85271317">
+              <caret line="86" column="2" selection-start-line="86" selection-start-column="2" selection-end-line="86" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ping.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/ping.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="22.709677">
+              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,18 +166,18 @@
         <option value="$PROJECT_DIR$/app/scripts/filters/ytdur.js" />
         <option value="$PROJECT_DIR$/app/scripts/services/spintax.js" />
         <option value="$PROJECT_DIR$/app/scripts/angularfire/config.js" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/drip.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/ping.js" />
-        <option value="$PROJECT_DIR$/app/views/drip.html" />
         <option value="$PROJECT_DIR$/app/scripts/js/parsexml.js" />
         <option value="$PROJECT_DIR$/app/views/ping.html" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/feed.js" />
         <option value="$PROJECT_DIR$/app/views/feed.html" />
-        <option value="$PROJECT_DIR$/app/styles/main.css" />
         <option value="$PROJECT_DIR$/app/scripts/app.js" />
         <option value="$PROJECT_DIR$/app/views/feeds.html" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/drip.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/feeds.js" />
+        <option value="$PROJECT_DIR$/app/styles/main.css" />
+        <option value="$PROJECT_DIR$/app/views/drip.html" />
       </list>
     </option>
   </component>
@@ -499,7 +533,7 @@
     <frame x="1911" y="-9" width="1938" height="1098" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16197917" sideWeight="0.87383664" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16197917" sideWeight="0.87383664" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16510417" sideWeight="0.1261634" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -833,35 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/drip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/drip.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-47.548386">
-          <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/ping.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.451612">
-          <caret line="524" column="0" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/vidp2-export (11).json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.645162">
@@ -910,18 +915,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/ping.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="22.709677">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/feeds.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.343284">
-          <caret line="168" column="74" selection-start-line="168" selection-start-column="74" selection-end-line="168" selection-end-column="74" />
+        <state vertical-scroll-proportion="-14.582089">
+          <caret line="122" column="41" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/feeds.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.449679">
-          <caret line="104" column="17" selection-start-line="104" selection-start-column="17" selection-end-line="104" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/drip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.597015">
+          <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/drip.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85271317">
+          <caret line="86" column="2" selection-start-line="86" selection-start-column="2" selection-end-line="86" selection-end-column="2" />
           <folding />
         </state>
       </provider>

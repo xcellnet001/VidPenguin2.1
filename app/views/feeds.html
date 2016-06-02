@@ -105,19 +105,23 @@
           <tr>
 
             <!-- Opens Video -->
-
-            <td width="15%"><a href ng-click="toggleDetail($index)" ><img src="{{ feed.thumb }}" class="img-thumbnail img-responsive" uib-tooltip="Click thumbnail to watch {{ feed.title }}"><div class="feed_vid_watch">WATCH</div></a>
-
+            <td width="15%">
+              <a href ng-click="toggleDetail($index)" >
+                <img src="{{ feed.thumb }}" class="img-thumbnail img-responsive" uib-tooltip="Click thumbnail to watch {{ feed.title }}">
+                <div class="feed_vid_watch">WATCH</div>
+              </a>
             </td>
 
             <!-- Clicks through child links -->
-            <td width="35%" ng-click="show.links = !show.links"><b>{{ feed.title }}</b>
-            <br>
-              {{feed.$id}}
-
+            <td width="35%" ng-click="show.links = !show.links">
+              <b>{{ feed.title }}</b>
             </td>
-            <td width="7%" ng-click="show.links = !show.links" class="tdcenter">{{ (links | filter:{ v: feed.v, active: true}).length }}</td>
-            <td ng-click="show.links = !show.links">{{feed.date | date:'medium'}}</td>
+            <td width="7%" ng-click="show.links = !show.links" class="tdcenter">
+              {{ (links | filter:{ v: feed.v, active: true}).length }}
+            </td>
+            <td ng-click="show.links = !show.links">
+              {{feed.date | date:'medium'}}
+            </td>
 
 
             <!-- application actions -->
@@ -170,43 +174,41 @@
             </td>
           </tr>
 
+          <!-- Tools -->
           <tr ng-show="show.links" ng-repeat="link in links | filter:{ vid: feed.$id, active: true}" class="links">
             <td colspan="1" class="link_row_fill">
               <!-- If t value is greater than zero -->
                  <a href="{{link.url}}{{feed.v}}&t={{feed.t}}" ng-if="feed.t > 0" target="_blank" class="btn btn-primary feedtool" uib-tooltip="Open Link">
-                  <i class="fa fa-youtube-play"></i></a>
+                    <i class="fa fa-youtube-play"></i>
+                 </a>
               <!-- If t value = zero or is null -->
-                <a href="{{link.url}}{{feed.v}}" ng-if="feed.t == 0" target="_blank" class="btn btn-primary feedtool" uib-tooltip="Open Link">
-                <i class="fa fa-youtube-play"></i></a>
+                  <a href="{{link.url}}{{feed.v}}" ng-if="feed.t == 0" target="_blank" class="btn btn-primary feedtool" uib-tooltip="Open Link">
+                    <i class="fa fa-youtube-play"></i>
+                  </a>
               <!-- delete link ** needs confirm ** -->
-                <a href="#/feeds" ng-click="links.$remove(link, confirm)" class="btn btn-danger feedtool" uib-tooltip="Delete Link">
-                <i style="width:12px;" class="fa fa-trash"></i></a>
-
-              <a href ng-click="addDrip(link)" class="btn btn-warning feedtool" uib-tooltip="Drip Social Starter">
-                <i  class="fa fa-coffee"></i>
-              </a>            </td>
-                <td colspan="2" >
-
+                  <a href="#/feeds" ng-click="links.$remove(link, confirm)" class="btn btn-danger feedtool" uib-tooltip="Delete Link">
+                    <i style="width:12px;" class="fa fa-trash"></i>
+                  </a>
+              <!-- add individual drip -->
+              <a href ng-click="show.dripO = !show.dripO" class="btn btn-warning feedtool" uib-tooltip="Drip Social Starter">
+                    <i  class="fa fa-coffee"></i>
+                  </a>
+            </td>
+            <td colspan="2" >
                   <div class="link_header">{{link.title}}</div>
                   <div class=""><b>Link id</b> :: {{link.id}}</div>
-
                   <div ng-repeat="drip in drips | filter:{linkID: link.$id}">
                       <b>Schedule Social Starter</b> :: <!-- <a href="/#/drip/#{{drip.$id}}"> -->{{ drip.$id }}</a>
-
-
                   </div>
+                    <br>
+                    {{feed.$id}}
+            </td>
 
-                  <br>  {{feed.$id}}
-
-                </td>
-
-            <td colspan="2" ng-init="limit = 200">
-
+            <td colspan="2" ng-init="limit = 300">
               {{link.desc | limitTo: limit}}
-              {{link.$index}}
-
             </td>
           </tr>
+
           <!-- Show JSON -->
           <tr ng-show="show.JSON" class="JSON">
             <td colspan="5">
@@ -224,10 +226,10 @@
                     {{link||json}}
                 </div>
                 }
+                </div>
+              </pre></td>
 
-              </pre>
-      </div>
-            </td>
+
           </tr>
 
           <!-- Show XML -->
@@ -317,6 +319,7 @@
               </div>
             </td>
           </tr>
+
 
           </tbody>
 

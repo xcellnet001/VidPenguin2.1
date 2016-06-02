@@ -355,7 +355,12 @@ color: #fff;
 .bluee {
   background-color: #337ab7;
 }
-
+.green{
+  background: #08c339;
+}
+.yellow {
+  background: #e3de4c;
+}
 .tpad {
   width: 100%;
   padding: 6px 12px;

@@ -75,5 +75,8 @@ angular.module('vidPenguin21App')
       console.log( 'Do you want fries with that?' );
     };
 
+    $scope.isActive = function() {
+
+    };
 
   });
