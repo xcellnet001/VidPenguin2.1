@@ -54,6 +54,10 @@ module.exports = function(config) {
       'bower_components/angular-elastic/elastic.js',
       'bower_components/clipboard/dist/clipboard.js',
       'bower_components/ngclipboard/dist/ngclipboard.js',
+      'bower_components/jsSHA/src/sha.js',
+      'bower_components/ng-twitter-api/dist/ng-twitter-api.js',
+      'bower_components/query-string/query-string.js',
+      'bower_components/angular-oauth2/dist/angular-oauth2.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

@@ -2,7 +2,8 @@
   "name": "vidpenguin21",
   "version": "0.0.0",
   "dependencies": {
-    "angular-youtube-embed": "^1.2.0"
+    "angular-youtube-embed": "^1.2.0",
+    "query-string": "^4.2.2"
   },
   "repository": {},
   "devDependencies": {

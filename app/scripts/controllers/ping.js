@@ -25,7 +25,6 @@ angular.module('vidPenguin21App')
       //watch form to add feed
       $scope.$watch('search', function() {
         $scope.getVid();
-
      });
 
 
@@ -45,7 +44,6 @@ angular.module('vidPenguin21App')
         $http({
           method: 'GET',
          url: 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=' + $scope.v + '&fields=items&key=AIzaSyCymvYkSlRTuDID-n1cmzxOor_lPh9SPGo&prettyprint=true'
-          //url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=' + $scope.search + '&fields=items(id%2Csnippet)&key=AIzaSyCymvYkSlRTuDID-n1cmzxOor_lPh9SPGo'
 
         }).then(function pingSuccess(response) {
           $scope.ping = angular.fromJson(response);
@@ -69,8 +67,6 @@ angular.module('vidPenguin21App')
               if (matches[2]) {minutes = Number(matches[2]);}
               if (matches[3]) {seconds = Number(matches[3]);}
             totalseconds = hours * 3600  + minutes * 60 + seconds;
-
-
           }
 
           $scope.vtime = totalseconds;
@@ -148,7 +144,9 @@ angular.module('vidPenguin21App')
         }
         return spun;
       };
-      //
+
+      // the below caused problems with spintax and didn't need in final, left for ref.
+
       //var spin_countVariations = function (spun) {
        // spun = spun.replace(/[^{|}]+/g, '1');
        // spun = spun.replace(/\{/g, '(');
@@ -171,8 +169,7 @@ angular.module('vidPenguin21App')
           console.log('sintitle ' + ct1.value);
         });
       };
-
-
+      
       //add links to temp array prior to to adding them to the FB list.
       $scope.addpreLinks = function() {
         //base load of preLinks with data
@@ -209,23 +206,15 @@ angular.module('vidPenguin21App')
               thumb: newpreLink.thumb
             });
           }
-
             console.log($scope.preLinks);
-
           });
         };
-
-
-
 
       $scope.resetpreLinks = function(){
 
         // angular.forEach($scope.preLinks, function (preLink) {
         //  preLink.active = false;
         // });
-
-
-
         $scope.preLinks.length = 0;
 
       };

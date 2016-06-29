@@ -66,25 +66,28 @@
             <img src="https://i.ytimg.com/vi/{{drip.v}}/default.jpg">
           </td>
 
-
           <td ng-repeat="l in links | filter:{ $id: drip.linkID}" width="40%">
             <h5>{{l.title}}</h5>
             <a href="{{l.url}}{{l.v}}" id="{{drip.$id}}"name="{{drip.$id}}">{{l.url}}{{l.v}}</a><br>
+                <b>Target :: </b><br>{{drip.target.name}}<br>
+                <b>Type :: </b><br>{{drip.type}}
 
           </td>
 
         <td ng-repeat="l in links | filter:{ $id: drip.linkID}" width="15%">
           <b>Date Submitted :: </b><br>{{drip.SubmitDate | date:'medium'}}<br>
-          <b>Date Scheduled :: </b><br>{{drip.scheduled | date:'medium'}}<br>
-          <b>Target :: {{drip.target.name}}</b>
-        </td>
+          <b>Date Scheduled :: </b><br>{{drip.SubmitDate + drip.ix | date:'medium'}}<br>
+          <b>Event Triggered:: </b><br>{{drip.triggered}}
 
          <td width="40%">
             <div ng-click="drips.$remove(drip)" class="btn btn-danger feedtool pull-right" uib-tooltip="Delete Record">
               <i style="width:12px;" class="fa fa-trash"></i></a>
               </div>
-            <div ng-click="manualEX(drip.linkID)" class="btn btn-primary feedtool pull-right" uib-tooltip="Manual Excute Record">
-              <i style="width:12px;" class="fa fa-bomb"></i></a>
+            <div ng-click="manualEX(drip)" class="btn wordpress_color feedtool fa-inverse pull-right" uib-tooltip="Manual Excute Record">
+              <i class="fa fa-wordpress" aria-hidden="true"></i></a>
+            </div>
+           <div ng-click="twitManualEX(drip)" class="btn twitter_color fa-inverse feedtool pull-right" uib-tooltip="Manual Excute Record">
+             <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
             </div>
          </td>
 

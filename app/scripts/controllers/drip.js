@@ -3,13 +3,13 @@
 /**
  * @ngdoc function
  * @name vidPenguin21App.controller:DripCtrl
- * @description
+ * @description - base social starter logic, controls timing and posting via api's provided
  * # DripCtrl
  * Controller of the vidPenguin21App
  */
 angular.module('vidPenguin21App')
   .controller('DripCtrl', function ($scope, user, Auth, $firebaseArray, $firebaseObject, Ref, $http) {
-    //Get UID
+    //Get UID and test if user has premission
     $scope.user = user;
     $scope.auth = Auth;
     $scope.uid = user.auth.uid;
@@ -17,16 +17,22 @@ angular.module('vidPenguin21App')
     //Does anyone know what time it is?
     $scope.milliseconds = (new Date()).getTime();
 
+    // synchronize social starters
     $scope.drips = $firebaseArray(Ref.child('drips').child(user.uid));
 
-    // synchronize a read-only, synchronized array of of user videos
+    // synchronize feeds
     $scope.feeds = $firebaseArray(Ref.child('feeds').child(user.uid));
 
-    // links for each video
+    // links for each links
     $scope.links = $firebaseArray(Ref.child('links').child(user.uid));
 
+
+    //set up to fire manual executition of posting to blogger - used for testing
     $scope.manualEX = function(linkID) {
+      console.log('1');
       $scope.link = $firebaseObject(Ref.child('links').child(user.uid + '/' + linkID));
+
+      console.log('2');
 
       $scope.link.$loaded()
         .then(function(data) {
@@ -42,15 +48,6 @@ angular.module('vidPenguin21App')
           });
 
           console.log( $scope.link.title, $scope.link.url + $scope.link.v, $scope.link.desc);
-
-          $scope.json = JSON.stringify({
-            'kind': 'blogger#post',
-            'blog': {
-            'id': '2906144303013687937'
-          },
-            'title': $scope.link.title,
-            'content': $scope.link.desc
-          });
 
         }).then(function bloggerpost(){
 
@@ -78,5 +75,43 @@ angular.module('vidPenguin21App')
     $scope.isActive = function() {
 
     };
+
+    $scope.twitManualEX = function(drip) {
+
+      $scope.drip = drip;
+      console.log($scope.drip.linkID);
+
+      $scope.link = $firebaseObject(Ref.child('links').child(user.uid + '/' + drip.linkID));
+
+      console.log($scope.link);
+      console.log($scope.link.$id);
+
+      $scope.link.$loaded()
+        .then(function(l) {
+          console.log(l === $scope.link);
+          console.log(l.vid);
+          $scope.feed = $firebaseObject(Ref.child('feeds').child(user.uid + '/' + l.vid));
+          console.log($scope.feed);
+
+          $scope.drip.triggered = '2';
+
+          Ref.authWithOAuthToken('twitter', {
+            'user_id': 'fearlessnet'
+          }, function(error, authData) {
+            if (error) {
+              console.log('Login Failed!', error);
+            } else {
+              console.log('Authenticated successfully with payload:', authData);
+            }
+          });
+
+
+        })
+
+    };
+
+    //add together time together for future excutation
+    $scope.Math = window.Math;
+    //$scope.ext = $scope.Math.min($scope.drip.SubmitDate + $scope.drip.frequency.t)
 
   });

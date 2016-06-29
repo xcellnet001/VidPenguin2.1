@@ -361,6 +361,12 @@ color: #fff;
 .yellow {
   background: #e3de4c;
 }
+.twitter_color {
+  background: #4099ff;
+}
+.wordpress_color {
+  background: #21759b;
+}
 .tpad {
   width: 100%;
   padding: 6px 12px;

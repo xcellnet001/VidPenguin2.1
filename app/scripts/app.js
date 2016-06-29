@@ -30,7 +30,8 @@ angular.module('vidPenguin21App', [
 	  'angular-carousel',
     'slick',
     'monospaced.elastic',
-    'ngclipboard'
+    'ngclipboard',
+    'ngTwitter'
   ]
 
 

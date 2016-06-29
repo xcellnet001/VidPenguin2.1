@@ -63,6 +63,10 @@ angular.module('vidPenguin21App')
     function success(msg) {
       alert(msg, 'success');
     }
+        $scope.oauthLogin = function(provider) {
+      $scope.err = null;
+      Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(redirect, showError);
+    };
 
     function alert(msg, type) {
       var obj = {text: msg+'', type: type};

@@ -120,7 +120,7 @@
               {{ (links | filter:{ v: feed.v, active: true}).length }}
             </td>
             <td ng-click="show.links = !show.links">
-              {{feed.date | date:'medium'}}
+              {{feed.date}}
             </td>
 
 
@@ -200,8 +200,10 @@
                   <div ng-repeat="drip in drips | filter:{linkID: link.$id}">
                       <b>Schedule Social Starter</b> :: <!-- <a href="/#/drip/#{{drip.$id}}"> -->{{ drip.$id }}</a>
                   </div>
+                    <!--
                     <br>
                     {{feed.$id}}
+                    -->
             </td>
 
             <td colspan="2" ng-init="limit = 300">
@@ -331,10 +333,3 @@
     <div id="feeds" ng-show="!feeds.length">You have no feeds and that makes us sad. Please click ping video to add a video and start your feeds. </div>
     <p class="alert alert-danger" ng-show="err">{{err}}</p>
   </div>
-
-
-
-
-
-
-

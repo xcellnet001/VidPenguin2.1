@@ -8,7 +8,7 @@
  * Controller of the vidPenguin21App
  */
 angular.module('vidPenguin21App')
-  .controller('FeedsCtrl', function ($scope, user, Auth, $filter, Ref, $sce, $firebaseArray, $firebaseObject, $uibModal, $timeout, $window) {
+  .controller('FeedsCtrl', function ($scope, user, Auth, $filter, Ref, $sce, $firebaseArray, $firebaseObject, $timeout, $window) {
 
     //Get UID
     $scope.user = user;
@@ -57,10 +57,18 @@ angular.module('vidPenguin21App')
 
       angular.forEach($scope.links,function(link) {
         if (feed.$id === link.vid) {
-          console.log(link);
-          //$scope.extime = '';
-          //console.log(extime);
 
+          console.log(link);
+          //var extime = $scope.frequency.selected.id.t * link.$id;
+          //var extime = 86400 * link.$id;
+          //console.log(extime);
+          //var count = 0;
+          //$scope.extime = $scope.feed.$Ref();
+
+          console.log($scope.drips.length);
+          console.log(feed.$id);
+
+          console.log(feed);
           $scope.drips.$add({
             user: $scope.user.uid,
             SubmitDate: $scope.milliseconds,
@@ -68,12 +76,13 @@ angular.module('vidPenguin21App')
             v: link.v,
             vid: link.vid,
             type: 'a',
+            ix: link.id * $scope.frequency.selected.id.t,
             frequency: $scope.frequency.selected.id,
             target: $scope.target.selected.id,
-            scheduled: '1496378054',
+            scheduled: $scope.milliseconds,
             triggered: '0'
-          });
-          console.log(link.vid);
+          }).then(console.log('drip added'));
+
         }
         });
 
@@ -83,11 +92,11 @@ angular.module('vidPenguin21App')
 
     //set time freq trigger
     $scope.frequency = [
-      {id: 1, name: '6 Hours', t: '21600'},
-      {id: 2, name: '12 Hours', t: '43200'},
-      {id: 3, name: 'Daily', t:'86400'},
-      {id: 4, name: 'Weekly', t:'604800'},
-      {id: 5, name: 'Monthly', t:'2629743'}
+      {id: 1, name: '6 Hours', t: '21600000'},
+      {id: 2, name: '12 Hours', t: '43200000'},
+      {id: 3, name: 'Daily', t:'86400000'},
+      {id: 4, name: 'Weekly', t:'604800000'},
+      {id: 5, name: 'Monthly', t:'2629743000'}
     ];
 
     //set target for post

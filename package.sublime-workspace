@@ -1,0 +1,201 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"l",
+				"length"
+			],
+			[
+				"m",
+				"min-height"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/xcellnet/client/oldfr/com_k2/fr_podcast/category.php",
+		"/home/xcellnet/client/oldfr/com_k2/fr_podcast/category_item.php",
+		"/home/xcellnet/client/oldfr/com_k2/fr_podcast/latest_item.php",
+		"/home/xcellnet/client/oldfr/com_k2/fr_podcast/item.php",
+		"/home/xcellnet/client/trans/trans/configuration.php",
+		"/home/xcellnet/client/trans/trans/trans.sql",
+		"/home/xcellnet/fearless/bus/app/scripts/controllers/gas.js",
+		"/home/xcellnet/fearless/bus/app/views/gas.html",
+		"/home/xcellnet/fearless/bus/app/index.html",
+		"/home/xcellnet/fearless/bus/app/scripts/app.js",
+		"/home/xcellnet/fearless/bus/app/views/chat.html",
+		"/home/xcellnet/fearless/bus/app/views/account.html",
+		"/home/xcellnet/fearless/bus/app/scripts/routes.js",
+		"/home/xcellnet/fearless/bus/app/styles/main.css",
+		"/home/xcellnet/fearless/bus/app/scripts/controllers/main.js",
+		"/home/xcellnet/client/trans/trans/ukIfjLQDby4i/Py8EnmzZqg96u.inc",
+		"/home/xcellnet/Desktop/sd",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/models/Syndwire.php",
+		"/home/xcellnet/fearless/bus/app/views/main.html",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/controllers/UserController.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/models/JVZoo.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/routes.php",
+		"/home/xcellnet/client/clicktitvty/wp-config.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/controllers/BaseController.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/Authority/Repo/User/SentryUser.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/config/packages/cartalyst/sentry/config.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/controllers/SessionController.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/views/users/forgot.blade.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/views/home.blade.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/bootstrap/start.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/bootstrap/paths.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/bootstrap/compiled.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/config/auth.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/start/global.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/models/User.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/start/local.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/start/artisan.php",
+		"/home/xcellnet/client/mpc/fucker/templates/t3_bs3_blank/css/custom.css",
+		"/home/xcellnet/.cache/.fr-PuD6G7/PatrickOliver-TO-IPCop.ovpn",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/observables.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/config/vars.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/config/session.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/Authority/Service/Form/ForgotPassword/ForgotPasswordForm.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/Authority/Service/Form/SuspendUser/SuspendUserFormLaravelValidator.php",
+		"/home/xcellnet/client/launch ninja/viddpenguin/download from dev/app/Authority/Service/Form/ForgotPassword/ForgotPasswordFormLaravelValidator.php",
+		"/home/xcellnet/.cache/.fr-L99uKc/PatrickOliver-TO-IPCop.ovpn"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Item video",
+			"Download",
+			"avDownloadLink",
+			"fearlessradio.com",
+			"total",
+			" #e5e5e5;",
+			"border-top: 1px solid #e5e5e5;",
+			"syndwire",
+			"$minutes",
+			"throttle",
+			"login",
+			"logi",
+			"login",
+			"attempts",
+			"forgot"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
